@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkarsh Chat App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+
+        }
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #74EBD5, #9FACE6);
+        }
+
+        .chat__section {
+            width: 90%;
+            max-width: 900px;
+            background: #fff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            background: #2C3E50;
+            border-radius: 10px 10px 0 0;
+            justify-content: space-between;
+        }
+        .brand .info h2{
+            color: #fff;
+            background-color: #2C3E55;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 5px 13px;
+        }
+
+        .brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .message__area {
+            height: 400px;
+            padding: 18px;
+            overflow-y: auto;
+        }
+
+        textarea {
+            display: block;
+            width: 80%;
+            padding: 15px;
+            font-size: 18px;
+            background: #FBFBFB;
+            border: none;
+            border-radius: 18px;
+            outline: none;
+            margin: 10px auto;
+            box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            resize: none;
+        }
+
+        .message {
+        padding: 0.1px 15px; 
+    border-radius: 4px; 
+    margin-bottom: 40px;
+    max-width:fit-content ;
+    min-width: 40px;
+    position: relative;
+            word-wrap: break-word;
+            align-items: center;
+        }
+
+        .incoming {
+            background: #8F8BE8;
+            color: #fff;
+        }
+
+        .outgoing {
+            background: #e9eafd;
+            color: #787986;
+            margin-left: auto;
+        }
+
+        .message h4 {
+            position: absolute;
+            top: -40px;
+            left: 0px;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .outgoing h4 {
+            position: absolute;
+            top: -40px;
+            left: 0px;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            padding-bottom: 3px;
+
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+<section class="chat__section">
+    <div class="brand">
+        <h1>Utkarsh Chat</h1>
+        <div class="info">
+            <!-- <h2>Utkarsh</h2> -->
+        </div>
+    </div>
+    <div class="message__area"></div>
+    <div>
+        <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
+    </div>
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/app.js"></script>
+<script>
+    // Your JavaScript code here
+    const socket = io();
+
+let name;
+do {
+    name = prompt("Please enter your Name:");
+    name = name.toUpperCase()
+} while (!name);
+
+let messagearea = document.querySelector(".message__area");
+let info = document.querySelector(".info");
+info.innerHTML = `<h2>${name}</h2>`
+let textarea = document.querySelector('#textarea');
+textarea.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage(e.target.value);
+    }
+});
+
+function sendMessage(message) {
+    message = message.trim(); // Trim the message
+    if (message === '') {
+        return; // Do not send empty messages
+    }
+
+    let msg = {
+        user: name,
+        message: message
+    };
+
+    appendMessage(msg, 'outgoing');
+    textarea.value = '';
+
+    // Emit the message to the server via socket
+    socket.emit('message', msg);
+    
+    scrollTobottom();
+}
+socket.emit('joined', name);
+
+
+function appendMessage(msg, type) {
+    let mainDiv = document.createElement('div');
+    let className = type;
+    mainDiv.classList.add(className, 'message');
+    let markup = "<h4>" + msg.user + "</h4>" + "<p>" + msg.message + "</p>";
+
+    mainDiv.innerHTML = markup;
+    messagearea.appendChild(mainDiv);
+}
+
+socket.on('message', (msg) => {
+    appendMessage(msg, 'incoming');
+    scrollTobottom();
+});
+
+function scrollTobottom() {
+    messagearea.scrollTop = messagearea.scrollHeight;
+}
+</script>
+</body>
+</html>
