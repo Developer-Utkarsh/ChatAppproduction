@@ -1,32 +1,32 @@
 const express = require('express');
-const static = require('static')
 const app = express();
+const serverless = require('serverless-http')
 const http = require('http').createServer(app)
-const PORT = process.env.PORT || 8000
+const io = require('socket.io')(http)
+const path = require('path');  // Add path module
+const router = express.Router()
+// const server = http.createServer(app);  // Create server using http module
+// const io = socketIO(server);
+
+const PORT = process.env.PORT || 8000;
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(path.join(__dirname, 'index.html'));  // Use path.join for correct file path
 });
 
-app.use(express.static(__dirname + '/public'))
 
-
-
-
-
-
-const io = require('socket.io')(http);
 
 const systemGreeting = {
     user: 'Jarvis',
-    message: `Welcome to Utkarsh Chat APP `
+    message: 'Welcome to Utkarsh Chat APP'
 };
 
 io.on('connection', (socket) => {
-    socket.broadcast.emit('message', systemGreeting);
-    console.log("connected..");
+    socket.emit('message', systemGreeting);  // Send a welcome message to the connecting client
+    console.log('Connected...');
 
-    socket.on("message", (msg) => {
-        socket.broadcast.emit('message', msg);
+    socket.on('message', (msg) => {
+        socket.broadcast.emit('message', msg);  // Broadcast the received message to all clients
     });
 
     socket.on('joined', (name) => {
@@ -35,10 +35,11 @@ io.on('connection', (socket) => {
             message: `${name} has joined the chat.`
         };
         
-        socket.broadcast.emit('message', systemMessage);
+        io.emit('message', systemMessage);  // Broadcast the join message to all clients
     });
-});
-
-http.listen(PORT, () => {
-    console.log(`Listening on localhost:${PORT}`)
 })
+
+module.exports.handler = serverless(app);
+http.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
+  })
