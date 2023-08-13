@@ -136,14 +136,14 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/public/app.js"></script>
 <script>
-    // Your JavaScript code here
+// Your JavaScript code here
     const socket = io();
 
 let name;
 do {
     name = prompt("Please enter your Name:");
-    name = name.toUpperCase()
 } while (!name);
+name = name.toUpperCase()
 
 let messagearea = document.querySelector(".message__area");
 let info = document.querySelector(".info");
@@ -181,7 +181,7 @@ function appendMessage(msg, type) {
     let mainDiv = document.createElement('div');
     let className = type;
     mainDiv.classList.add(className, 'message');
-    let markup = "<h4>" + msg.user + "</h4>" + "<p>" + msg.message + "</p>";
+    let markup = "<h4>" + msg.user + " </h4>" + "<p>" + msg.message + "</p>";
 
     mainDiv.innerHTML = markup;
     messagearea.appendChild(mainDiv);
