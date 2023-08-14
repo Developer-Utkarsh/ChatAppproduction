@@ -6,195 +6,445 @@
     <title>Utkarsh Chat App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
     <style>
-        *{
-            font-family: 'Poppins', sans-serif;
-
-        }
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background: linear-gradient(to right, #74EBD5, #9FACE6);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
         }
 
         .chat__section {
-            width: 90%;
+            width: 100%;
             max-width: 900px;
             background: #fff;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            overflow: hidden;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+            position: relative;
         }
 
         .brand {
             display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 5px 15px;
-            background: #2C3E50;
-            border-radius: 10px 10px 0 0;
-            justify-content: space-between;
-        }
-        .brand .info h2{
-            color: #fff;
+            padding: 10px;
             background-color: #2C3E55;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            padding: 5px 13px;
-        }
-
-        .brand img {
-            height: 40px;
-            margin-right: 10px;
+            border-radius: 10px 10px 0 0;
         }
 
         .brand h1 {
-            font-size: 22px;
+            font-size: 24px;
             color: #fff;
             text-transform: uppercase;
             margin: 0;
         }
 
         .message__area {
-            height: 400px;
-            padding: 18px;
+            /* height: 300px; */
+            flex-grow: 1;
+            padding: 15px;
             overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #6c6faa #F1F1F1;
+            animation: slideIn 0.5s ease;
+            height: 450px;
         }
 
-        textarea {
-            display: block;
-            width: 80%;
-            padding: 15px;
-            font-size: 18px;
-            background: #FBFBFB;
-            border: none;
-            border-radius: 18px;
-            outline: none;
-            margin: 10px auto;
-            box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            resize: none;
+        .message__area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message__area::-webkit-scrollbar-track {
+            background: #F1F1F1;
+        }
+
+        .message__area::-webkit-scrollbar-thumb {
+            background-color: #6c6faa;
+            border-radius: 10px;
         }
 
         .message {
-        padding: 0.1px 15px; 
-    border-radius: 4px; 
-    margin-bottom: 40px;
-    max-width:fit-content ;
-    min-width: 40px;
-    position: relative;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
             word-wrap: break-word;
-            align-items: center;
+            font-size: 16px;
+            animation: slideIn 0.3s ease;
         }
 
         .incoming {
             background: #8F8BE8;
             color: #fff;
+            align-self: flex-start;
+            animation: fadeInLeft 0.5s ease;
         }
 
         .outgoing {
             background: #e9eafd;
             color: #787986;
-            margin-left: auto;
+            align-self: flex-end;
+            animation: fadeInRight 0.5s ease;
         }
 
         .message h4 {
-            position: absolute;
-            top: -40px;
-            left: 0px;
-            font-size: 16px;
+            font-size: 14px;
             color: #333;
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
-        .outgoing h4 {
-            position: absolute;
-            top: -40px;
-            left: 0px;
-            font-size: 16px;
-            color: #333;
-            font-weight: bold;
-            padding-bottom: 3px;
+        .message p {
+            margin: 0;
+        }
 
-            width: fit-content;
+        .message .info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            background: linear-gradient(to right, #8F8BE8, #6c6faa);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: background 0.3s ease;
+            margin-left: 10px;
+            width: auto;
+            animation: slideIn 0.5s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            background-color: #2C3E55;
+            border-radius: 20px;
+            margin: 10px;
+        }
+
+        .info h2 {
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .total-users {
+            font-size: 14px;
+            color: #999;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: backgroundAnimation 30s infinite alternate;
+            background: linear-gradient(-45deg, #74EBD5, #8F8BE8, #74EBD5, #8F8BE8);
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .message__area {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #6c6faa #F1F1F1;
+            animation: slideIn 0.5s ease;
+            max-height: 400px;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            background-color: #2C3E55;
+            border-radius: 20px;
+            margin: 10px;
+            flex-direction: column;
+        }
+
+        .info h2 {
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .total-users,
+        .online-users {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: backgroundAnimation 30s infinite alternate;
+            background: linear-gradient(-45deg, #74EBD5, #8F8BE8, #74EBD5, #8F8BE8);
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .chat__section {
+                max-width: 90%;
+                margin: 10px;
+            }
+
+            .textarea {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            textarea {
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .message__area {
+                max-height: 280px;
+            }
+        }
+        .message__area {
+            /* ... Your existing styles ... */
+            transition: max-height 0.3s ease;
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6c6faa;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .fab:hover {
+            background-color: #8F8BE8;
+        }
+
+        /* New animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 <body>
-<section class="chat__section">
-    <div class="brand">
-        <h1>Utkarsh Chat</h1>
-        <div class="info">
-            <!-- <h2>Utkarsh</h2> -->
+    <div class="background-animation"></div>
+    <section class="chat__section">
+        <div class="brand">
+            <h1>Utkarsh Chat</h1>
         </div>
-    </div>
-    <div class="message__area"></div>
-    <div>
-        <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
-    </div>
-</section>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/public/app.js"></script>
-<script>
-    // Your JavaScript code here
-    const socket = io();
+        <div class="info">
+            <h2>Your Name</h2>
+        </div>
+        <div class="total-users" id="total-users">Total Users: 1</div>
+        <div class="message__area"></div>
+        <div class="textarea">
+            <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
+            <button class="btn" id="sendbtn">Send</button>
+        </div>
+    </section>
+    <div class="fab" id="fab">&#9998;</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/app.js"></script>
+    <script>
+        const socket = io();
 
-let name;
-do {
-    name = prompt("Please enter your Name:");
-    name = name.toUpperCase()
-} while (!name);
+        let name;
+        do {
+            name = prompt("Please enter your Name:");
+        } while (!name);
+        name = name.toUpperCase();
 
-let messagearea = document.querySelector(".message__area");
-let info = document.querySelector(".info");
-info.innerHTML = `<h2>${name}</h2>`
-let textarea = document.querySelector('#textarea');
-textarea.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage(e.target.value);
-    }
-});
+        let messageArea = document.querySelector(".message__area");
+        let info = document.querySelector(".info");
+        let totalUsers = document.querySelector("#total-users");
+        info.innerHTML = `<h2>${name}</h2>`;
 
-function sendMessage(message) {
-    message = message.trim(); // Trim the message
-    if (message === '') {
-        return; // Do not send empty messages
-    }
+        let textarea = document.querySelector('#textarea');
+        let sendBtn = document.querySelector("#sendbtn");
 
-    let msg = {
-        user: name,
-        message: message
-    };
+        textarea.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage(e.target.value);
+            }
+        });
 
-    appendMessage(msg, 'outgoing');
-    textarea.value = '';
+        sendBtn.addEventListener('click', () => {
+            sendMessage(textarea.value);
+        });
 
-    // Emit the message to the server via socket
-    socket.emit('message', msg);
-    
-    scrollTobottom();
-}
-socket.emit('joined', name);
+        function sendMessage(message) {
+            message = message.trim();
+            if (message === '') {
+                return;
+            }
 
+            let msg = {
+                user: name,
+                message: message
+            };
 
-function appendMessage(msg, type) {
-    let mainDiv = document.createElement('div');
-    let className = type;
-    mainDiv.classList.add(className, 'message');
-    let markup = "<h4>" + msg.user + "</h4>" + "<p>" + msg.message + "</p>";
+            appendMessage(msg, 'outgoing');
+            textarea.value = '';
 
-    mainDiv.innerHTML = markup;
-    messagearea.appendChild(mainDiv);
-}
+            socket.emit('message', msg);
+            scrollToBottom();
+        }
 
-socket.on('message', (msg) => {
-    appendMessage(msg, 'incoming');
-    scrollTobottom();
-});
+        socket.emit('joined', name);
 
-function scrollTobottom() {
-    messagearea.scrollTop = messagearea.scrollHeight;
-}
-</script>
+        function appendMessage(msg, type) {
+            let mainDiv = document.createElement('div');
+            mainDiv.classList.add('message', type);
+            let markup = `
+                <h4>${msg.user}</h4>
+                <p>${msg.message}</p>
+                <div class="info">${formatDate(new Date())}</div>
+            `;
+
+            mainDiv.innerHTML = markup;
+            messageArea.appendChild(mainDiv);
+        }
+
+        socket.on('message', (msg) => {
+            appendMessage(msg, 'incoming');
+            scrollToBottom();
+        });
+
+        socket.on('userCount', (count) => {
+            totalUsers.textContent = `Total Users: ${count}`;
+        });
+
+        function scrollToBottom() {
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        function formatDate(date) {
+            const options = { hour: 'numeric', minute: 'numeric' };
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
+        const fab = document.getElementById('fab');
+        const messagearea = document.querySelector('.message__area');
+
+        fab.addEventListener('click', () => {
+            messagearea.style.maxHeight = messagearea.style.maxHeight === '400px' ? '80vh' : '400px';
+        });
+    </script>
 </body>
 </html>
