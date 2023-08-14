@@ -36,6 +36,7 @@
             position: relative;
         }
 
+        /* ... Rest of your styles ... */
         .brand {
             display: flex;
             justify-content: center;
@@ -51,163 +52,13 @@
             text-transform: uppercase;
             margin: 0;
         }
-
-        .message__area {
-            /* height: 300px; */
-            flex-grow: 1;
-            padding: 15px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: #6c6faa #F1F1F1;
-            animation: slideIn 0.5s ease;
-            height: 450px;
-        }
-
-        .message__area::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .message__area::-webkit-scrollbar-track {
-            background: #F1F1F1;
-        }
-
-        .message__area::-webkit-scrollbar-thumb {
-            background-color: #6c6faa;
-            border-radius: 10px;
-        }
-
-        .message {
-            border-radius: 10px;
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            word-wrap: break-word;
-            font-size: 16px;
-            animation: slideIn 0.3s ease;
-        }
-
-        .incoming {
-            background: #8F8BE8;
-            color: #fff;
-            align-self: flex-start;
-            animation: fadeInLeft 0.5s ease;
-        }
-
-        .outgoing {
-            background: #e9eafd;
-            color: #787986;
-            align-self: flex-end;
-            animation: fadeInRight 0.5s ease;
-        }
-
-        .message h4 {
-            font-size: 14px;
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .message p {
-            margin: 0;
-        }
-
-        .message .info {
-            font-size: 12px;
-            color: #999;
-            margin-top: 5px;
-        }
-
-        .textarea {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #F1F1F1;
-            border-radius: 30px;
-        }
-
-        textarea {
-            flex-grow: 1;
-            border: none;
-            outline: none;
-            resize: none;
-            padding: 10px;
-            background: #F1F1F1;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 30px;
-            background: linear-gradient(to right, #8F8BE8, #6c6faa);
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            transition: background 0.3s ease;
-            margin-left: 10px;
-            width: auto;
-            animation: slideIn 0.5s ease;
-        }
-
-        .btn:hover {
-            background: linear-gradient(to right, #6c6faa, #8F8BE8);
-        }
-
-        .info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 5px;
-            background-color: #2C3E55;
-            border-radius: 20px;
-            margin: 10px;
-        }
-
-        .info h2 {
-            font-size: 16px;
-            color: #fff;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .total-users {
-            font-size: 14px;
-            color: #999;
-            margin-top: 5px;
-            text-align: center;
-        }
-
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            animation: backgroundAnimation 30s infinite alternate;
-            background: linear-gradient(-45deg, #74EBD5, #8F8BE8, #74EBD5, #8F8BE8);
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
         .message__area {
             flex-grow: 1;
             padding: 15px;
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #6c6faa #F1F1F1;
-            animation: slideIn 0.5s ease;
+            animation: fadeInUp 0.5s ease;
             max-height: 400px;
         }
 
@@ -243,7 +94,18 @@
             margin-top: 5px;
             text-align: center;
         }
+        /* Additional animations */
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease;
+        }
 
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.5s ease;
+        }
         .background-animation {
             position: fixed;
             top: 0;
@@ -341,11 +203,103 @@
                 transform: translateX(0);
             }
         }
+        .message__area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message__area::-webkit-scrollbar-track {
+            background: #F1F1F1;
+        }
+
+        .message__area::-webkit-scrollbar-thumb {
+            background-color: #6c6faa;
+            border-radius: 10px;
+        }
+
+        .message {
+            border-radius: 10px;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            word-wrap: break-word;
+            font-size: 16px;
+            animation:  0.3s ease;
+        }
+
+        .incoming {
+            background: #8F8BE8;
+            color: #fff;
+            align-self: flex-start;
+            animation: slideInLeft 0.5s ease;
+        }
+
+        .outgoing {
+            background: #e9eafd;
+            color: #787986;
+            align-self: flex-end;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .message h4 {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .message p {
+            margin: 0;
+        }
+
+        .message .info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            background: linear-gradient(to right, #8F8BE8, #6c6faa);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: background 0.3s ease;
+            margin-left: 10px;
+            width: auto;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+        }
+
     </style>
 </head>
 <body>
     <div class="background-animation"></div>
-    <section class="chat__section">
+    <section class="chat__section fade-in-up">
         <div class="brand">
             <h1>Utkarsh Chat</h1>
         </div>
@@ -354,14 +308,13 @@
         </div>
         <div class="total-users" id="total-users">Total Users: 1</div>
         <div class="message__area"></div>
-        <div class="textarea">
+        <div class="textarea fade-in-up">
             <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
-            <button class="btn" id="sendbtn">Send</button>
+            <button class="btn fade-in-up" id="sendbtn">Send</button>
         </div>
     </section>
-    <div class="fab" id="fab">&#9998;</div>
+    <div class="fab slide-in-left" id="fab">&#9998;</div>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/public/app.js"></script>
     <script>
         const socket = io();
 
@@ -439,11 +392,12 @@
             const options = { hour: 'numeric', minute: 'numeric' };
             return new Intl.DateTimeFormat('en-US', options).format(date);
         }
+
         const fab = document.getElementById('fab');
         const messagearea = document.querySelector('.message__area');
 
         fab.addEventListener('click', () => {
-            messagearea.style.maxHeight = messagearea.style.maxHeight === '400px' ? '80vh' : '400px';
+            messagearea.style.maxHeight = messagearea.style.maxHeight === '400px' ? '90vh' : '400px';
         });
     </script>
 </body>
