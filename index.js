@@ -19,6 +19,7 @@ const systemGreeting = {
 };
 
 let userCount = 0;
+let name; // Declare the name variable here
 
 io.on('connection', (socket) => {
     socket.emit('message', systemGreeting);
@@ -31,10 +32,11 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('message', msg);
     });
 
-    socket.on('joined', (name) => {
+    socket.on('joined', (userName) => {
+        name = userName;
         const systemMessage = {
             user: 'ZARVIS',
-            message: `${name} has joined the chat.`
+            message: `On this chat ${name} has joined.`
         };
 
         io.emit('message', systemMessage);
@@ -46,7 +48,7 @@ io.on('connection', (socket) => {
 
         const systemMessage = {
             user: 'ZARVIS',
-            message: 'A user has left the chat.'
+            message: `${name} has left the chat.`
         };
 
         io.emit('message', systemMessage);

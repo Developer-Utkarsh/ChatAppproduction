@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Utkarsh Chat App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             margin: 0;
@@ -17,7 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(to right, #74EBD5, #9FACE6);
+            /* background: linear-gradient(to right, #74EBD5, #9FACE6); */
             font-family: 'Poppins', sans-serif;
             margin: 0;
         }
@@ -294,26 +295,808 @@
         .btn:hover {
             background: linear-gradient(to right, #6c6faa, #8F8BE8);
         }
+        
+        /* New styles and improvements */
+        .chat__section {
+            /* ... Your existing styles ... */
+            overflow: hidden;
+        }
 
+        .brand {
+            /* ... Your existing styles ... */
+        }
+
+        .message__area {
+            /* ... Your existing styles ... */
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #6c6faa #F1F1F1;
+            transition: max-height 0.3s ease;
+        }
+
+        .textarea {
+            /* ... Your existing styles ... */
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+        }
+
+        textarea {
+            /* ... Your existing styles ... */
+            width: calc(100% - 80px); /* Adjust the width based on the button width */
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            width: 80px; /* Set a fixed width for the send button */
+        }
+
+        .fab {
+            /* ... Your existing styles ... */
+        }
+
+        /* Updated animations */
+        @keyframes backgroundAnimation {
+            /* ... Your existing styles ... */
+        }
+
+        /* ... Your existing keyframes ... */
+
+        /* Additional animations */
+        .animate-up {
+            animation: animateUp 0.3s ease forwards;
+        }
+
+        .animate-fade-in {
+            animation: animateFadeIn 0.5s ease forwards;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #74EBD5, #9FACE6);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .chat__section {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+        }
+
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #2C3E55;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .brand h1 {
+            font-size: 24px;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        /* ... Rest of your styles ... */
+
+        @media screen and (max-width: 768px) {
+            .chat__section {
+                max-width: 90%;
+                margin: 10px;
+            }
+
+            .textarea {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            textarea {
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .message__area {
+                max-height: 280px;
+            }
+        }
+
+        /* Additional styles and animations */
+
+        /* Improved floating action button */
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6c6faa;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .fab:hover {
+            background-color: #8F8BE8;
+        }
+
+        /* Additional animations */
+        .animate-up {
+            animation: animateUp 0.3s ease forwards;
+        }
+
+        .animate-fade-in {
+            animation: animateFadeIn 0.5s ease forwards;
+        }
+        .message {
+            /* ... Your existing styles ... */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Message borders */
+        .message {
+            /* ... Your existing styles ... */
+            border: 1px solid #ccc;
+        }
+
+        /* Typography enhancements */
+        .brand h1,
+        .info h2,
+        .message h4,
+        .message p,
+        .message .info {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        /* Message shadows */
+        .message {
+            /* ... Your existing styles ... */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Micro-interactions */
+        .message:hover {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Focused message highlight */
+        .message:focus {
+            color: #333;
+
+            outline: none;
+            background-color: #f0f0f0;
+        }
+
+        /* Interactive buttons */
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+
+        /* Consistent spacing */
+        /* .chat__section,
+        .brand,
+        .info,
+        .message__area,
+        .total-users,
+        .textarea {
+            margin: 20px;
+        } */
+
+        .message__area {
+            max-height: 400px;
+        }
+
+        /* Your existing styles */
+
+        /* New styles and improvements */
+        /* ... Rest of your styles ... */
+
+        /* Styling for the message input area */
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:hover {
+            border-color: #6c6faa;
+        }
+
+        .textarea:focus-within {
+            border-color: #8F8BE8;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: #F1F1F1;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:hover,
+        textarea:focus {
+            background-color: #f5f5f5;
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+         /* Your existing styles */
+
+        /* New styles and improvements */
+        /* ... Rest of your styles ... */
+
+        /* Styling for the message input area */
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px; /* Added spacing */
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:hover {
+            border-color: #6c6faa;
+        }
+
+        .textarea:focus-within {
+            border-color: #8F8BE8;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:hover,
+        textarea:focus {
+            background-color: rgba(241, 241, 241, 0.5); /* Semi-transparent background on hover/focus */
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+/* New styles and improvements */
+        /* ... Rest of your styles ... */
+
+        /* Styling for the message input area */
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px; /* Added spacing */
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:hover {
+            border-color: #6c6faa;
+        }
+
+        .textarea:focus-within {
+            border-color: #8F8BE8;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:hover,
+        textarea:focus {
+            background-color: rgba(241, 241, 241, 0.5); /* Semi-transparent background on hover/focus */
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .chat__section {
+                /* ... Your existing styles ... */
+            }
+
+            .textarea {
+                margin: 10px 0; /* Adjust margins for smaller screens */
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background: linear-gradient(to right, #F0E5D1, #E8D1C6); */
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .chat__section {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+        }
+
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #2C3E54;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .brand h1 {
+            font-size: 24px;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        /* ... Rest of your styles ... */
+
+        /* Styling for the message input area */
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px; /* Added spacing */
+            background: #f5f5f5; /* Light gray background */
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:hover {
+            border-color: #6c6faa;
+        }
+
+        .textarea:focus-within {
+            border-color: #8F8BE8;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: #f5f5f5; /* Light gray background */
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:hover,
+        textarea:focus {
+            background-color: #e0e0e0; /* Slightly darker gray on hover/focus */
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+         /* Your existing styles */
+
+        /* New styles and improvements */
+        /* ... Rest of your styles ... */
+
+        /* Styling for the message input area */
+        .textarea {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 10px; /* Added spacing */
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .textarea:hover {
+            border-color: #6c6faa;
+        }
+
+        .textarea:focus-within {
+            border-color: #8F8BE8;
+        }
+
+        textarea {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            background: transparent; /* Transparent background */
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        textarea:hover,
+        textarea:focus {
+            background-color: rgba(241, 241, 241, 0.5); /* Semi-transparent background on hover/focus */
+        }
+
+        .btn {
+            /* ... Your existing styles ... */
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #6c6faa, #8F8BE8);
+            transform: scale(1.05);
+        }
+
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .chat__section {
+                /* ... Your existing styles ... */
+            }
+
+            .textarea {
+                margin: 10px 0; /* Adjust margins for smaller screens */
+            }
+        }
+
+        .user-left {
+    color: #FF6B6B; /* Red color for user leaving messages */
+    font-style: italic;
+}
+.system-message {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px solid #e1e1e1; /* Set border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold; /* Set font weight */
+    font-style: italic; /* Set font style */
+    animation: fadeIn 0.5s ease; /* Add fade-in animation */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Existing styles ... */
+
+/* Add dark mode styles */
+.dark-mode {
+    background: linear-gradient(to right, #313131, #1C1C1C);
+    color: #fff;
+}
+
+.dark-mode .brand {
+    background-color: #111;
+}
+
+.dark-mode .message__area {
+    background-color: #1C1C1C;
+    color: #fff;
+}
+
+/* ... Rest of your styles ... */
+/* Existing styles ... */
+
+/* Add dark mode styles */
+.dark-mode {
+    background: linear-gradient(to right, #313131, #1C1C1C);
+    color: #fff;
+}
+
+.dark-mode .brand {
+    background-color: #111;
+}
+
+.dark-mode .infod {
+    background-color: #1C1C1C;
+}
+
+.dark-mode section{
+    background-color: #1C1C1C;
+
+}
+.dark-mode .total-users {
+    background-color: #1C1C1C;
+    margin: 0;
+}
+
+
+.dark-mode .message__area {
+    background-color: #1C1C1C;
+    color: #fff;
+}
+
+.dark-mode .message {
+    border-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .outgoing{
+    border-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #333;
+}
+.dark-mode .message:hover {
+    border-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    color: #fff;
+}
+
+.dark-mode .message h4,
+.dark-mode .message p,
+.dark-mode .message .info {
+    color: #fff;
+}
+
+.dark-mode .message::-webkit-scrollbar-thumb {
+    background-color: #444;
+}
+
+/* Add dark mode styles for textarea and button */
+.dark-mode .textarea,
+.dark-mode textarea {
+    background: #333;
+    border-color: #444;
+    color: #fff;
+}
+
+.dark-mode .btn {
+    background: linear-gradient(to right, #6c6faa, #8F8BE8);
+    color: #fff;
+}
+
+/* ... Rest of your styles ... */
+/* Existing styles ... */
+
+/* Dark mode scrollbar styles */
+.dark-mode .message__area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dark-mode .message__area::-webkit-scrollbar-track {
+    background: #1C1C1C;
+}
+
+.dark-mode .message__area::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 10px;
+}
+.dark-mode{
+   
+    background: linear-gradient(to right, #1C1C1C, #1C1C1C); /* Set a dark background gradient */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+/* ... Rest of your styles ... */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle  {
+    background-color: #6c6faa;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #8F8BE8;
+    transform: scale(1.05);
+}
+.dark{
+    display: none;
+}
+.dark .light{
+    display: none;
+}
+.dark .dark{
+    display: flex;
+}
+.light{
+    display: flex;
+}
+dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #6c6faa;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #8F8BE8;
+    transform: scale(1.05);
+}
+
+.dark {
+    display: none;
+}
+
+.dark .light {
+    display: none;
+}
+
+.dark .dark {
+    display: flex;
+}
+
+.light {
+    display: flex;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background: linear-gradient(to right, #313131, #1C1C1C);
+    color: #fff;
+}
+
+.dark-mode .brand {
+    background-color: #111;
+}
+
+.dark-mode .message__area {
+    background-color: #1C1C1C;
+    color: #fff;
+}
     </style>
 </head>
-<body>
-    <div class="background-animation"></div>
-    <section class="chat__section fade-in-up">
-        <div class="brand">
-            <h1>Utkarsh Chat</h1>
-        </div>
-        <div class="info">
-            <h2>Your Name</h2>
+<div class="background-animation"></div>
+    <section class="chat__section animate-fade-in">
+        <div class="infod">
+            <div class="brand">
+                <h1>Utkarsh Chat</h1>
+            </div>
+            <div class="info">
+                <h2>Your Name</h2>
+            </div>
         </div>
         <div class="total-users" id="total-users">Total Users: 1</div>
         <div class="message__area"></div>
-        <div class="textarea fade-in-up">
+        <div class="textarea animate-up">
             <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
-            <button class="btn fade-in-up" id="sendbtn">Send</button>
+            <button class="btn" id="sendbtn">Send</button>
         </div>
     </section>
     <div class="fab slide-in-left" id="fab">&#9998;</div>
+    <div id="darka" class="dark-mode-toggle dark" onclick="darkmode()"><i class="fa-solid fa-moon"></i></div>
+    <div id="lighta" class="dark-mode-toggle light" onclick="lightmode()"><i class="fa-solid fa-sun"></i></div>
+</body>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
@@ -365,6 +1148,19 @@
         function appendMessage(msg, type) {
             let mainDiv = document.createElement('div');
             mainDiv.classList.add('message', type);
+
+            if (msg.user === 'ZARVIS') {
+                if (msg.message.startsWith(name)) {
+                    mainDiv.classList.add('user-left');
+                } else {
+                    mainDiv.classList.add('system-message');
+                }
+            } else if (type === 'outgoing') {
+                mainDiv.classList.add('outgoing');
+            } else {
+                mainDiv.classList.add('incoming');
+            }
+
             let markup = `
                 <h4>${msg.user}</h4>
                 <p>${msg.message}</p>
@@ -376,7 +1172,15 @@
         }
 
         socket.on('message', (msg) => {
-            appendMessage(msg, 'incoming');
+            if (msg.user === 'ZARVIS') {
+                if (msg.message.startsWith(name)) {
+                    appendMessage(msg, 'user-left');
+                } else {
+                    appendMessage(msg, 'system');
+                }
+            } else {
+                appendMessage(msg, 'incoming');
+            }
             scrollToBottom();
         });
 
@@ -399,6 +1203,27 @@
         fab.addEventListener('click', () => {
             messagearea.style.maxHeight = messagearea.style.maxHeight === '400px' ? '90vh' : '400px';
         });
+
+        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const body = document.body;
+        const dark = document.getElementById("darka");
+        const light = document.getElementById("lighta");
+
+        if (prefersDarkMode) {
+            body.classList.add("dark-mode");
+        }
+
+        function darkmode() {
+            body.classList.add("dark-mode");
+            dark.style.display = "none";
+            light.style.display = "flex";
+        }
+
+        function lightmode() {
+            body.classList.remove("dark-mode");
+            light.style.display = "none";
+            dark.style.display = "flex";
+        }
     </script>
-</body>
+
 </html>
