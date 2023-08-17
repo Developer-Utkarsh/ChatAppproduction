@@ -1022,7 +1022,7 @@
 .light{
     display: flex;
 }
-dark-mode-toggle {
+.dark-mode-toggle {
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -1074,15 +1074,224 @@ dark-mode-toggle {
     background-color: #1C1C1C;
     color: #fff;
 }
+/* ... Your existing styles ... */
+
+/* Styling for the name input container */
+.name-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    transition: opacity 0.3s ease;
+    /* opacity: 0; */
+}
+
+/* Styling for the name input box */
+.name-input-box {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideInUp 0.5s ease;
+    width: 80%; /* Adjust the width */
+    max-width: 400px; /* Set a maximum width */
+}
+
+/* Styling for the input field */
+#nameInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+/* Styling for the submit button */
+#nameSubmitBtn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #6c6faa, #8F8BE8);
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    width: auto;
+    font-weight: bold;
+}
+
+/* Hover and focus styles for the submit button */
+#nameSubmitBtn:hover {
+    background: linear-gradient(135deg, #8F8BE8, #6c6faa);
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .name-input-box {
+        width: 90%; /* Adjust the width for smaller screens */
+    }
+}
+/* ... Your existing styles ... */
+
+/* Styling for the name input container */
+.dark-mode .name-input-container {
+    /* ... Your existing styles ... */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+}
+
+/* Styling for the name input box */
+/* .dark-mode .name-input-box {
+    /* ... Your existing styles ... */
+ 
+
+/* Dark mode styles */
+/* .dark-mode {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+
+.dark-mode .name-input-box input{
+    background-color: #333;
+    border: 2px solid #000;
+    color: #eee;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* Adjust shadow for dark background */
+
+}
+.dark-mode .name-input-box input:focus{
+    background-color: #222;
+    border: 2px solid #111;
+    color: #eee;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); 
+}
+.dark-mode .name-input-box {
+    background-color: #111; /* Dark background color */
+    color: #f8f8f8; /* Light text color */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Adjust shadow for dark background */
+}
+
+/* ... Your existing styles ... */
+
+/* ... Your existing styles ... */
+/* ... Your existing styles ... */
+
+/* Styling for the name input container */
+.name-input-container {
+    /* ... Your existing styles ... */
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+     /* opacity: 0; Start with 0 opacity */
+    transform: translateY(-20px); /* Move it up slightly */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Add transitions */
+}
+
+/* Styling for the name input box */
+.name-input-box {
+    /* ... Your existing styles ... */
+    background-color: #f8f8f8; /* Light background color */
+    color: #333; /* Dark text color */
+}
+
+/* Dark mode styles ... */
+
+/* Animation when container becomes visible */
+.name-input-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ... Your existing styles ... */
+.name-input-container {
+    /* background: linear-gradient(45deg, #FFD700, #FF6A6A); */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    /* width: 300px; */
+    /* max-width: 90%; */
+    /* opacity: 0; */
+    /* transform: translateY(-20px); */
+    /* margin: 40px auto; */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* Animation when container becomes visible */
+
+
+  /* Styling for the name input box */
+  .name-input-box {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    /* display: none; */
+  }
+
+  /* Border animation for focus */
+  .name-input-box:focus {
+    background-color: rgba(255, 255, 255, 1);
+    outline: none;
+    box-shadow: 0 0 0 2px #FF6A6A, 0 0 10px rgba(255, 106, 106, 0.5);
+  }
+
+  /* Text entry effect */
+  .name-input-box::placeholder {
+    color: transparent;
+  }
+
+  .name-input-box:focus::placeholder {
+    color: #aaa;
+    transition: color 0.3s ease;
+  }
+
+  /* Button styles */
+  .show-name-input-button {
+    background-color: #FF6A6A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .show-name-input-button:hover {
+    background-color: #FF4C4C;
+  }
+  .name-input-container{
+    display: none;
+  }
     </style>
 </head>
+<div class="name-input-container" id="nameInputContainer">
+    <div class="name-input-box">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button id="nameSubmitBtn">Submit</button>
+    </div>
+</div>
 <div class="background-animation"></div>
     <section class="chat__section animate-fade-in">
         <div class="infod">
             <div class="brand">
                 <h1>Utkarsh Chat</h1>
             </div>
-            <div class="info">
+            <div class="info" id="info">
                 <h2>Your Name</h2>
             </div>
         </div>
@@ -1101,101 +1310,138 @@ dark-mode-toggle {
     <script>
         const socket = io();
 
-        let name;
-        do {
-            name = prompt("Please enter your Name:");
-        } while (!name);
-        name = name.toUpperCase();
+        let getname;
+        getname = localStorage.getItem("chatName");
+if (!getname) {
+    showNameInputContainer();
+} else {
+    initializeChat(getname);
+}
 
-        let messageArea = document.querySelector(".message__area");
-        let info = document.querySelector(".info");
-        let totalUsers = document.querySelector("#total-users");
-        info.innerHTML = `<h2>${name}</h2>`;
-
-        let textarea = document.querySelector('#textarea');
-        let sendBtn = document.querySelector("#sendbtn");
-
-        textarea.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage(e.target.value);
+function showNameInputContainer() {
+    const nameInputContainer = document.getElementById("nameInputContainer");
+    nameInputContainer.style.display = "flex";
+    
+    const nameInput = document.getElementById("nameInput");
+    const nameSubmitBtn = document.getElementById("nameSubmitBtn");
+    
+    nameSubmitBtn.addEventListener("click", () => {
+        const enteredName = nameInput.value.trim();
+        if (enteredName !== "") {
+            localStorage.setItem("chatName", enteredName);
+            nameInputContainer.style.display = "none";
+            initializeChat(enteredName);
+        }
+    });
+    nameInput.addEventListener("keyup", (e) => {
+        if (e.key === 'Enter') {
+            const enteredName = nameInput.value.trim();
+            if (enteredName !== "") {
+                localStorage.setItem("chatName", enteredName);
+                nameInputContainer.style.display = "none";
+                initializeChat(enteredName);
             }
-        });
+        }
+    });
+}
+function initializeChat(name) {
 
-        sendBtn.addEventListener('click', () => {
-            sendMessage(textarea.value);
-        });
+    let messageArea = document.querySelector(".message__area");
+    let totalUsers = document.querySelector("#total-users");
+    
+    let textarea = document.querySelector('#textarea');
+    let info = document.querySelector("#info");
+    let sendBtn = document.querySelector("#sendbtn");
+    name = name.toUpperCase();
 
-        function sendMessage(message) {
-            message = message.trim();
-            if (message === '') {
-                return;
-            }
+    // Rest of your existing code...
 
-            let msg = {
-                user: name,
-                message: message
-            };
+    info.innerHTML = `<h2>${name}</h2>`;
 
-            appendMessage(msg, 'outgoing');
-            textarea.value = '';
 
-            socket.emit('message', msg);
-            scrollToBottom();
+    // Rest of your existing code...
+    textarea.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage(e.target.value);
+        }
+    });
+
+    sendBtn.addEventListener('click', () => {
+        sendMessage(textarea.value);
+    });
+
+    function sendMessage(message) {
+        message = message.trim();
+        if (message === '') {
+            return;
         }
 
-        socket.emit('joined', name);
+        let msg = {
+            user: name,
+            message: message
+        };
 
-        function appendMessage(msg, type) {
-            let mainDiv = document.createElement('div');
-            mainDiv.classList.add('message', type);
+        appendMessage(msg, 'outgoing');
+        textarea.value = '';
 
-            if (msg.user === 'ZARVIS') {
-                if (msg.message.startsWith(name)) {
-                    mainDiv.classList.add('user-left');
-                } else {
-                    mainDiv.classList.add('system-message');
-                }
-            } else if (type === 'outgoing') {
-                mainDiv.classList.add('outgoing');
+        socket.emit('message', msg);
+        scrollToBottom();
+    }
+
+    socket.emit('joined', name);
+
+    function appendMessage(msg, type) {
+        let mainDiv = document.createElement('div');
+        mainDiv.classList.add('message', type);
+
+        if (msg.user === 'ZARVIS') {
+            if (msg.message.startsWith(name)) {
+                mainDiv.classList.add('user-left');
             } else {
-                mainDiv.classList.add('incoming');
+                mainDiv.classList.add('system-message');
             }
-
-            let markup = `
-                <h4>${msg.user}</h4>
-                <p>${msg.message}</p>
-                <div class="info">${formatDate(new Date())}</div>
-            `;
-
-            mainDiv.innerHTML = markup;
-            messageArea.appendChild(mainDiv);
+        } else if (type === 'outgoing') {
+            mainDiv.classList.add('outgoing');
+        } else {
+            mainDiv.classList.add('incoming');
         }
 
-        socket.on('message', (msg) => {
-            if (msg.user === 'ZARVIS') {
-                if (msg.message.startsWith(name)) {
-                    appendMessage(msg, 'user-left');
-                } else {
-                    appendMessage(msg, 'system');
-                }
+        let markup = `
+            <h4>${msg.user}</h4>
+            <p>${msg.message}</p>
+            <div class="info">${formatDate(new Date())}</div>
+        `;
+
+        mainDiv.innerHTML = markup;
+        messageArea.appendChild(mainDiv);
+    }
+
+    socket.on('message', (msg) => {
+        if (msg.user === 'ZARVIS') {
+            if (msg.message.startsWith(name)) {
+                appendMessage(msg, 'user-left');
             } else {
-                appendMessage(msg, 'incoming');
+                appendMessage(msg, 'system');
             }
-            scrollToBottom();
-        });
-
-        socket.on('userCount', (count) => {
-            totalUsers.textContent = `Total Users: ${count}`;
-        });
-
-        function scrollToBottom() {
-            messageArea.scrollTop = messageArea.scrollHeight;
+        } else {
+            appendMessage(msg, 'incoming');
         }
+        scrollToBottom();
+    });
 
-        function formatDate(date) {
-            const options = { hour: 'numeric', minute: 'numeric' };
-            return new Intl.DateTimeFormat('en-US', options).format(date);
-        }
+    socket.on('userCount', (count) => {
+        totalUsers.textContent = `Total Users: ${count}`;
+    });
+
+    function scrollToBottom() {
+        messageArea.scrollTop = messageArea.scrollHeight;
+    }
+
+    function formatDate(date) {
+        const options = { hour: 'numeric', minute: 'numeric' };
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+}
 
         const fab = document.getElementById('fab');
         const messagearea = document.querySelector('.message__area');
