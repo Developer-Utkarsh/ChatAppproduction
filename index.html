@@ -333,25 +333,12 @@
             width: 80px; /* Set a fixed width for the send button */
         }
 
-        .fab {
-            /* ... Your existing styles ... */
-        }
 
-        /* Updated animations */
-        @keyframes backgroundAnimation {
-            /* ... Your existing styles ... */
-        }
+
 
         /* ... Your existing keyframes ... */
 
-        /* Additional animations */
-        .animate-up {
-            animation: animateUp 0.3s ease forwards;
-        }
-
-        .animate-fade-in {
-            animation: animateFadeIn 0.5s ease forwards;
-        }
+    
         * {
             margin: 0;
             padding: 0;
@@ -1277,6 +1264,181 @@
   .name-input-container{
     display: none;
   }
+  #activeUsersContainer {
+    border: 1px solid #111;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#activeUsersHeader {
+    cursor: pointer;
+}
+
+#activeUsersList {
+    display: none;
+    margin-top: 10px;
+}
+
+.active-user {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.dark-mode .joined-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 3px;
+    border: 2px solid #111;
+}
+#activeUsersContainer {
+            border: 1px solid #111;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        #activeUsersHeader {
+            cursor: pointer;
+        }
+
+        #activeUsersList {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .active-user {
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 3px;
+            background-color: #f1f1f1;
+        }
+
+        .dark-mode .active-user {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .joined-user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 3px 10px;
+            box-shadow: none;
+            margin:3px auto;
+            width: 100%;
+            max-width: 60%;
+            border: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+border-radius: 16px;
+        }
+
+        .dark-mode .joined-user {
+            border-color: #000;
+            box-shadow: none;
+            border-radius: 16px;
+            
+            
+        }
+
+        /* Additional styling for YOU label */
+        .you {
+            color: #3498db;
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+            /* border: 2px solid #111; */
+
+        }
+        /* Your existing CSS styles */
+
+/* Responsive styles for the active user list */
+@media screen and (max-width: 600px) {
+    #activeUsersList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .active-user {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+        padding: 5px;
+        border-radius: 3px;
+        background-color: #f1f1f1;
+    }
+
+    .dark-mode .active-user {
+        background-color: #333;
+        color: #fff;
+    }
+}
+/* Your existing CSS styles */
+
+/* Responsive styles for the active user list */
+@media screen and (max-width: 600px) {
+    #activeUsersList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .active-user {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #3498db;
+        color: #fff;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 0.3s ease, background-color 0.3s ease, margin-bottom 0.3s ease;
+    }
+
+    .active-user:hover {
+        background-color: #2980b9;
+        transform: scale(1.05);
+    }
+
+    .dark-mode .active-user {
+        background-color: #444;
+    }
+
+    /* Animation for user entry */
+    .active-user-enter {
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInUp 0.5s ease forwards, scaleIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        to {
+            transform: scale(1);
+        }
+    }
+}
+
+
     </style>
 </head>
 <div class="name-input-container" id="nameInputContainer">
@@ -1295,7 +1457,19 @@
                 <h2>Your Name</h2>
             </div>
         </div>
-        <div class="total-users" id="total-users">Total Users: 1</div>
+<div class="joined-user" id="joined-user">
+        <div class="total-users" id="total-users">
+            Active Users: 1
+        </div>
+        <div id="activeUsersList" class="active-user">
+            <!-- Active user names will be dynamically added here -->
+            <h2 class="you" style="color: #3498db;">YOU</h2>
+            </div>
+        
+        </div>
+
+
+        
         <div class="message__area"></div>
         <div class="textarea animate-up">
             <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
@@ -1309,7 +1483,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
-
+        let activeUsersList;
         let getname;
         getname = localStorage.getItem("chatName");
 if (!getname) {
@@ -1441,8 +1615,32 @@ function initializeChat(name) {
         const options = { hour: 'numeric', minute: 'numeric' };
         return new Intl.DateTimeFormat('en-US', options).format(date);
     }
+    // Inside your initializeChat function
+    socket.on("userListUpdate", (activeUsers) => {
+        updateActiveUsersList(activeUsers);
+    });
+}
+activeUsersList = document.getElementById("activeUsersList");
+function updateActiveUsersList(activeUsers) {
+    // activeUsersList.innerHTML = "";
+    activeUsers.forEach((user) => {
+        if (user !== name) {
+            let userDiv = document.createElement("div");
+            userDiv.classList.add("active-user");
+            userDiv.textContent += user;
+            activeUsersList.appendChild(userDiv);
+        }
+    });
 }
 
+const totalusers = document.getElementById("joined-user");
+totalusers.addEventListener("click", () => {
+    if (activeUsersList.style.display === "none") {
+        activeUsersList.style.display = "block";
+    } else {
+        activeUsersList.style.display = "none";
+    }
+});
         const fab = document.getElementById('fab');
         const messagearea = document.querySelector('.message__area');
 
@@ -1470,6 +1668,7 @@ function initializeChat(name) {
             light.style.display = "none";
             dark.style.display = "flex";
         }
+        
     </script>
 
 </html>

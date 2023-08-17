@@ -19,7 +19,7 @@ const systemGreeting = {
 };
 
 let userCount = 0;
-let name; // Declare the name variable here
+let activeUsers = []; // Declare the activeUsers array here
 
 io.on('connection', (socket) => {
     socket.emit('message', systemGreeting);
@@ -34,24 +34,29 @@ io.on('connection', (socket) => {
 
     socket.on('joined', (userName) => {
         name = userName;
+        activeUsers.push(name); // Add the user to activeUsers array
         const systemMessage = {
             user: 'ZARVIS',
             message: `On this chat ${name} has joined.`
         };
 
         io.emit('message', systemMessage);
+        io.emit("userListUpdate", activeUsers); // Update active user list
     });
 
     socket.on('disconnect', () => {
         userCount--;
         io.emit('userCount', userCount);
 
-        const systemMessage = {
-            user: 'ZARVIS',
-            message: `${name} has left the chat.`
-        };
-
-        io.emit('message', systemMessage);
+        if (name) {
+            activeUsers = activeUsers.filter((user) => user !== name); // Remove user from activeUsers
+            const systemMessage = {
+                user: 'ZARVIS',
+                message: `${name} has left the chat.`
+            };
+            io.emit('message', systemMessage);
+            io.emit("userListUpdate", activeUsers); // Update active user list
+        }
     });
 });
 
