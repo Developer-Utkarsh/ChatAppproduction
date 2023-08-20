@@ -850,6 +850,7 @@
     font-weight: bold; /* Set font weight */
     font-style: italic; /* Set font style */
     animation: fadeIn 0.5s ease; /* Add fade-in animation */
+    width: 100%;
 }
 @keyframes fadeIn {
     from {
@@ -1438,9 +1439,448 @@ border-radius: 16px;
     }
 }
 
+.chat__section {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.infod {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.brand h1 {
+    font-size: 24px;
+    color: #3498db;
+}
+
+.info h2 {
+    font-size: 18px;
+    color: #555;
+}
+
+.joined-user {
+    margin-bottom: 20px;
+}
+
+.total-users {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.active-user {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+
+.you {
+    font-size: 16px;
+    color: #3498db;
+    background-color: #e9eafd;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.message__area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; Align messages to the left by default */
+}
+
+.message {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    word-wrap: break-word;
+    font-size: 16px;
+    animation: fadeIn 0.3s ease;
+    max-width: 90%;
+    position: relative;
+}
+
+
+
+/* Rest of your animation keyframes and other styles... */
+
+
+.message h4 {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message p {
+    margin: 0;
+}
+
+.message .info {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.message {
+    display: flex;
+    flex-direction: column;
+    /* background: #222; */
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 5px;
+    max-width: 90%;
+}
+.incoming {
+    background: #8F8BE8;
+    color: #fff;
+    animation: slideInLeft 0.5s ease;
+    align-self: flex-start;
+    margin-right: auto; /* Push incoming messages to the left */
+}
+
+.outgoing {
+    background: #e9eafd;
+    color: #787986;
+    animation: fadeInUp 0.5s ease;
+    align-self: flex-end;
+    margin-left: auto; /* Push outgoing messages to the right */
+}
+.message h4 {
+    font-size: 14px;
+    margin: 0;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.message p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.message .info {
+    font-size: 12px;
+    color: #000;
+}
+
+/* Add your animation keyframes and other styles here */
+.info h2{
+    color: #FFF;
+    padding: 5px;
+}
+.info{
+    border-radius: 8px;
+}
+.joined-user{
+    border-radius: 16px;
+    padding: 0;
+}
+.total-users{
+    margin-bottom: 0;
+}
+.brand h1 {
+    color: #fff;
+}
+.dark-mode .brand h1{
+    color: #3498db;
+}
+.message h4 {
+    color: #000 ;
+}
+.message .info{
+    color: #ccc;
+}
+.infod{
+    margin-bottom: 0;
+}
+@media (max-width:450px){
+    .infod{
+        display: block;
+    margin-bottom: 0;
+}
+
+
+}
+.active-user{
+
+    display: block;
+    flex-wrap: nowrap;
+    gap: 0px;
+    margin: 0;
+    padding: 2px;
+}
+.dark-mode .active-user{
+    background-color: #222;
+}
+.message{
+    max-width: 90%;
+}
+/* ... Your existing CSS ... */
+
+/* Entering animation for the background */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3498db; /* Animation background color */
+    z-index: -1; /* Place it behind other content */
+    animation: fadeInBackground 1s ease forwards; /* Animation duration and timing function */
+}
+
+/* Keyframes for the background animation */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Entering animation for the chat section */
+.chat__section {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Keyframes for the chat section animation */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ... Your existing CSS ... */
+
+/* Loader animation */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+/* Keyframes for the loader animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* .background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 998; /* Behind loader, above other content */
+/* } */ 
+
+/* Loader animation */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0,0.975);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+}
+
+/* Keyframes for the loader animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* ... Your existing CSS ... */
+
+/* Dark overlay for background */
+
+/* Loader animation */
+.loader-container {
+    background-color: rgba(0, 0, 0, 0.975); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: transparent; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+/* Keyframes for the loader animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animate the transition between loader and content */
+.loader-container.fade-out {
+    opacity: 0;
+}
+
+.background-animation.fade-in {
+    opacity: 1;
+}
+
+/* ... Your existing CSS ... */
+@media (max-width:720px){
+    .chat__section{
+        max-width: 90%;
+    }
+}
+/* ... Your existing CSS ... */
+
+/* Liquid-like animation */
+.liquid-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #3498db, transparent);
+    animation: liquidWave 3s linear infinite alternate;
+    z-index: 997; /* Behind the loader */
+}
+
+/* Keyframes for the liquid animation */
+@keyframes liquidWave {
+    0% {
+        transform: skewY(5deg);
+    }
+    100% {
+        transform: skewY(-5deg);
+    }
+}
+/* ... Your existing CSS ... */
+
+/* Bubbles animation */
+.bubbles-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: bubbleRise 4s linear infinite;
+}
+
+@keyframes bubbleRise {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+/* ... Your existing CSS ... */
+
+/* ... Your existing CSS ... */
 
     </style>
-</head>
+</head> 
+<div class="loader-container" id="loaderContainer">
+    <div class="loader"></div>
+    <!-- <div class="bubbles-container">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            Add more bubbles as needed
+        </div> -->
+        <div class="liquid-animation"></div>
+</div>
 <div class="name-input-container" id="nameInputContainer">
     <div class="name-input-box">
         <input type="text" id="nameInput" placeholder="Enter your name">
@@ -1470,7 +1910,7 @@ border-radius: 16px;
 
 
         
-        <div class="message__area"></div>
+        <div class="message__area message-container"></div>
         <div class="textarea animate-up">
             <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
             <button class="btn" id="sendbtn">Send</button>
@@ -1668,7 +2108,32 @@ totalusers.addEventListener("click", () => {
             light.style.display = "none";
             dark.style.display = "flex";
         }
-        
+        // Add this JavaScript code at the end of your HTML body or in a separate script file
+
+// Wait for the page to load before triggering the animation
+window.onload = function() {
+    // Get the elements to animate
+    const backgroundAnimation = document.querySelector('.background-animation');
+    const chatSection = document.querySelector('.chat__section');
+
+    // Trigger the animations
+    backgroundAnimation.style.animationPlayState = 'running';
+    chatSection.style.animation = 'slideInFromTop 1s ease forwards';
+    const loaderContainer = document.getElementById('loaderContainer');
+    // const chatSection = document.getElementById('chatSection');
+
+    // Show the chat section with animation
+    chatSection.style.animation = 'slideInFromTop 1s ease forwards';
+    loaderContainer.classList.add('fade-out');
+    backgroundAnimation.classList.add('fade-in');
+    // Hide the loader
+    loaderContainer.style.animation = 'fadeOut 1s ease forwards';
+    setTimeout(() => {
+        loaderContainer.style.display = 'none';
+    }, 1000);
+
+};
+
     </script>
 
 </html>
