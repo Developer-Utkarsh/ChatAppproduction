@@ -21,9 +21,9 @@ const systemGreeting = {
 
 let userCount = 0;
 let activeUsers = []; // Declare the activeUsers array here
-const openai = require("openai");
+// const openai = require("openai");
 
-const apiKey = "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";
+// const apiKey = "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";
 // const configuration = new Configuration({
 //   apiKey: apiKey,
 // });
@@ -36,8 +36,8 @@ async function generateBotResponse(userMessage) {
     
     
   } catch (error) {
-    console.error("Error generating bot response:", error);
-    return "An error occurred while generating a response.";
+    // console.error("Error generating bot response:", error);
+    // return "An error occurred while generating a response.";
   }
 }
 
@@ -46,7 +46,7 @@ async function generateBotResponse(userMessage) {
 
 const testMessage = "ZARVIS, tell me about yourself.";
 const botResponse = generateBotResponse(testMessage);
-console.log("Bot Response:", botResponse);
+// console.log("Bot Response:", botResponse);
 
 io.on('connection', (socket) => {
     socket.emit('message', systemGreeting);
