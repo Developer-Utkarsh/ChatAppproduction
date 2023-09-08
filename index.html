@@ -1492,7 +1492,7 @@ border-radius: 16px;
 .message__area {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     /* align-items: flex-start; Align messages to the left by default */
 }
 
@@ -1605,9 +1605,7 @@ border-radius: 16px;
     color: #FFF;
     padding: 5px;
 }
-.info{
-    border-radius: 8px;
-}
+
 .joined-user{
     border-radius: 16px;
     padding: 0;
@@ -1821,18 +1819,18 @@ border-radius: 16px;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #3498db, transparent);
-    animation: liquidWave 3s linear infinite alternate;
+    background: linear-gradient(to bottom, #1234ab, transparent);
+    animation: liquidWave 2s linear infinite alternate;
     z-index: 997; /* Behind the loader */
 }
 
 /* Keyframes for the liquid animation */
 @keyframes liquidWave {
     0% {
-        transform: skewY(5deg);
+        height: 0%;
     }
     100% {
-        transform: skewY(-5deg);
+        height: 100%;
     }
 }
 /* ... Your existing CSS ... */
@@ -1868,6 +1866,1486 @@ border-radius: 16px;
 /* ... Your existing CSS ... */
 
 /* ... Your existing CSS ... */
+/* Add this CSS to style image messages */
+.message img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.message.incoming img {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.message.outgoing img {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Add this CSS to style the image input and send button */
+.textarea input[type="file"] {
+    display: none;
+}
+
+/* .textarea button {
+    margin-left: 8px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+} */
+
+.textarea button:hover {
+    background-color: #2980b9;
+}
+
+/* Add this CSS to style the active users list */
+.active-user {
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+/* Add this CSS to style the typing indicator */
+.typing-indicator {
+    /* font-style: oblique; */
+    color: #eee;
+    text-align: center;
+    margin-top: 5px;
+    font-weight:600;
+    letter-spacing: 0.6px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #2980b9;
+    width: auto;
+    margin: auto;
+    /* display: flex; */
+    padding: 1px 5px;
+    background-color: #2980b9;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-size: 18px;
+
+}
+/* Add this CSS to style the "Clear Chat" button */
+.btn#clearChatBtn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn#clearChatBtn:hover {
+    background-color: #c0392b;
+}
+/* Add this CSS to style the message search feature */
+.search-container {
+    margin-top: 16px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-result {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+/* Add this CSS to style the DM feature */
+.dm-container {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dm-container.show {
+    display: block;
+}
+
+.dm-users {
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+.dm-messages {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+.dm-message-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.dm-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.dm-input input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dm-input button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Example CSS to style the open DM button */
+#openDMButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Example CSS to style the DM container */
+#dmContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+/* Styling for the DM container */
+.dm-container {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 80vh;
+  width: 320px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dm-container.show {
+  transform: translateX(0);
+}
+
+/* Header styling */
+.dm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.dm-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.close-dm-btn {
+  cursor: pointer;
+}
+
+/* Message area styling */
+.dm-message-area {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 10px 20px;
+}
+
+.dm-message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.dm-message.incoming {
+  background-color: #f0f0f0;
+}
+
+.dm-message.outgoing {
+  background-color: #00aaff;
+  color: #fff;
+}
+
+.dm-message h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dm-message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.dm-message .info {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Input area styling */
+.dm-input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.dm-input {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.dm-send-btn {
+  margin-left: 10px;
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dm-send-btn:hover {
+  background-color: #0077cc;
+}
+
+/* Dark mode styling */
+.dark-mode .dm-container {
+  background-color: #333;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .dm-header {
+  background-color: #111;
+}
+
+.dark-mode .dm-message-area {
+  background-color: #222;
+}
+
+.dark-mode .dm-message.incoming {
+  background-color: #444;
+}
+
+.dark-mode .dm-message.outgoing {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+.dark-mode .dm-input-area {
+  background-color: #111;
+  border-top: 1px solid #444;
+}
+
+.dark-mode .dm-input {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .dm-send-btn {
+  background-color: #0077cc;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .dm-container {
+    width: 100%;
+    border-radius: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+:root {
+  --dm-bg-color: #ffffff; /* Default background color for light mode */
+  --dm-header-bg-color: #f0f0f0; /* Default header background color for light mode */
+  --dm-header-text-color: #333333; /* Default header text color for light mode */
+  --dm-border-color: #e0e0e0; /* Default border color for light mode */
+  --dm-send-btn-bg-color: #007bff; /* Default send button background color for light mode */
+  --dm-send-btn-text-color: #ffffff; /* Default send button text color for light mode */
+}
+
+/* Dark mode */
+body.dark-mode {
+  --dm-bg-color: #333333; /* Background color for dark mode */
+  --dm-header-bg-color: #2c2c2c; /* Header background color for dark mode */
+  --dm-header-text-color: #ffffff; /* Header text color for dark mode */
+  --dm-border-color: #444444; /* Border color for dark mode */
+  --dm-send-btn-bg-color: #6c757d; /* Send button background color for dark mode */
+  --dm-send-btn-text-color: #ffffff; /* Send button text color for dark mode */
+}
+/* Add this CSS code to your existing styles */
+.dm-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--dm-bg-color);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 300px;
+  max-height: 400px;
+  display: none;
+  flex-direction: column;
+}
+
+.dm-header {
+  background-color: var(--dm-header-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#dmTitle {
+  font-size: 18px;
+  margin: 0;
+  color: var(--dm-header-text-color);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--dm-header-text-color);
+}
+
+.dm-message-area {
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.dm-input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--dm-border-color);
+}
+
+.dm-input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.dm-send-btn {
+  background-color: var(--dm-send-btn-bg-color);
+  color: var(--dm-send-btn-text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.dm-container {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 300px;
+  max-height: 70vh;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dm-title {
+  padding: 10px;
+  background-color: #222;
+  border-bottom: 1px solid #444;
+  text-align: center;
+  font-weight: bold;
+}
+
+.dm-message-area {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.dm-message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dm-message.incoming {
+  background-color: #444;
+}
+
+.dm-message.outgoing {
+  background-color: #007bff;
+  align-self: flex-end;
+}
+
+.dm-input {
+  padding: 10px;
+  border-top: 1px solid #444;
+  background-color: #222;
+  color: #fff;
+}
+
+.close-dm-btn {
+  align-self: flex-end;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #ff3f34;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Direct Message Container Styles */
+.dm-container {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 80vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Direct Message Message Area Styles */
+.dm-message__area {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    padding: 10px;
+    /* ... (other styles) */
+}
+
+/* Direct Message Input Styles */
+.dm-input__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #000;
+    border-top: 1px solid #111;
+    /* ... (other styles) */
+}
+
+.dm-input {
+    flex-grow: 1;
+    padding: 5px;
+    /* ... (other styles) */
+}
+
+.dm-send__btn {
+    margin-left: 10px;
+    /* ... (other styles) */
+}
+
+.close-dm__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    /* ... (other styles) */
+}
+
+/* Direct Message Popup Styles */
+.dm-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dm-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ... (other styles) */
+.dm-container {
+    /* Your existing styles for the container */
+}
+
+.dm-header {
+    /* Your existing styles for the header */
+}
+
+.dm-message-area {
+    /* Your existing styles for the message area */
+}
+
+
+.dm-container {
+    /* Your existing styles for the container */
+}
+
+.dm-header {
+    /* Your existing styles for the header */
+}
+
+.dm-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #eee;
+    transition: color 0.3s ease;
+}
+
+.dm-close-btn:hover {
+    color: #e74c3c;
+}
+
+.dm-message-area {
+    /* Your existing styles for the message area */
+}
+
+.dm-input-container {
+    position: absolute;
+    bottom: 0;
+    /* background-color: #fff; */
+    padding: 0px;
+    /* border-top: 1px solid #ddd; */
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.dm-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    margin:2px ;
+    width: 90%;
+}
+
+.dm-send-btn {
+    padding: 10px;
+    background-color: #007bff;
+    /* color: #fff; */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 90%;
+    margin: auto;
+}
+
+.dm-send-btn:hover {
+    background-color: #0056b3;
+}
+.dm-container {
+    /* Your existing styles for the container */
+    position: fixed;
+    bottom: -100%;
+    left: 55%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease;
+    z-index: 1000;
+}
+
+.dm-container.show {
+    bottom: 0;
+}
+
+.dm-header {
+    /* Your existing styles for the header */
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dm-close-btn {
+    /* Your existing styles for the close button */
+}
+
+.dm-message-area {
+    /* Your existing styles for the message area */
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.dm-input__container {
+    /* Your existing styles for the input container */
+    position: sticky;
+    bottom: 0;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.dm-input {
+    /* Your existing styles for the input */
+}
+
+.dm-send-btn {
+    /* Your existing styles for the send button */
+}
+.dm-container {
+    /* Your existing styles for the container */
+    position: fixed;
+    bottom: -100%;
+    left: 56%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.dm-container.show {
+    bottom: 0;
+    opacity: 1;
+    animation: slideInUp 0.5s ease forwards, fadeIn 0.5s ease forwards;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Rest of your existing styles */
+/* CSS for Emoji Picker */
+.emoji-picker {
+    display: flex;
+    align-items: center;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+}
+
+.emoji-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.emoji-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-container {
+    max-height: 150px; /* Set maximum height for scrollable container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.emoji {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    /* padding: 5px; */
+}
+
+.emoji:hover {
+    background-color: #f0f0f0;
+}
+/* Style for the emoji picker container */
+.emoji-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  padding:0;
+}
+
+/* Style for the emoji button */
+.emoji-btn {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 5px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+
+}
+
+/* Style for the emoji button on hover */
+.emoji-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Style for the emoji list container */
+.emoji-list {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  transform: translateY(10px);
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: none;
+  flex-wrap: wrap;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* Style for individual emojis */
+.emoji-list button {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Style for individual emojis on hover */
+.emoji-list button:hover {
+  transform: scale(1.1);
+}
+
+/* Animation for showing the emoji list */
+.emoji-list.animate-in {
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+/* Animation for hiding the emoji list */
+.emoji-list.animate-out {
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+/* Style for the emoji picker container */
+.emoji-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+/* Style for the emoji button */
+.emoji-btn {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Style for the emoji button on hover */
+.emoji-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Style for the emoji list container */
+.dark-mode .emoji-list {
+  position: absolute;
+  bottom: 100%;
+  left: -50px;
+  transform: translateY(10px);
+  background-color: #222;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: none;
+  flex-wrap: wrap;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 200px; /* Adjust the width as needed */
+  padding: 10px;
+}
+.emoji-list{
+background-color: #eee;
+position: absolute;
+  bottom: 100%;
+  left: -50px;
+  transform: translateY(10px);
+  /* background-color: #222; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: none;
+  flex-wrap: wrap;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 200px; /* Adjust the width as needed */
+  padding: 10px;
+}
+
+/* Style for individual emojis */
+.emoji-list button {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+  width: 20%; /* Adjust the width to fit 4-5 emojis per row */
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Style for individual emojis on hover */
+.emoji-list button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  
+}
+
+/* Animation for showing the emoji list */
+.emoji-list.animate-in {
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+/* Animation for hiding the emoji list */
+.emoji-list.animate-out {
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+/* Define scrollbar track and thumb colors for dark mode */
+:root {
+  --scrollbar-thumb-color: #ffffff; /* Thumb color */
+  --scrollbar-track-color: #333333; /* Track color */
+}
+
+/* Style for the emoji list container */
+.emoji-list {
+  /* ... Your existing emoji list styles ... */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #fff #333;
+
+  /* Hide scrollbar when not hovered */
+  scrollbar-gutter: #333;
+}
+
+/* Style for scrollbar thumb */
+.emoji-list::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+/* Style for scrollbar track */
+.emoji-list::-webkit-scrollbar-track {
+  background-color: #333;
+}
+/* CSS for emoji container */
+
+.emoji-picker {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px; /* Adjust the margin as needed */
+}
+
+.emoji-list {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    /* left: 0; */
+    /* background-color: #fff; Background color of emoji container */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    max-height: 150px; /* Maximum height of emoji container */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+/* Rest of your existing CSS styles... */
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container to center the chat app */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Style loader, name input, and background animations as needed */
+
+/* Chat section */
+.chat__section {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Add styles and animations to various chat elements as needed */
+
+/* Fab button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+    background-color: #2980b9;
+}
+
+/* Dark mode and light mode toggles */
+.dark-mode-toggle, .light-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.light-mode-toggle {
+    transform: scale(0);
+}
+
+/* Add more styles and animations as needed */
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    /* Adjust styles for smaller screens */
+}
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container to center the chat app */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Style loader, name input, and background animations as needed */
+.loader-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.name-input-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Chat section */
+.chat__section {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding:10px 20px;
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Add styles and animations to various chat elements as needed */
+
+
+.textarea {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.textarea textarea {
+    flex-grow: 1;
+    /* border: none; */
+    /* outline: none; */
+    resize: none;
+    border: 1px solid #555;
+
+    /* border-radius: 5px; */
+    padding: 10px;
+}
+
+.emoji-picker {
+    margin-left: 10px;
+}
+
+/* Fab button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+    background-color: #2980b9;
+}
+
+/* Dark mode and light mode toggles */
+.dark-mode-toggle, .light-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.light-mode-toggle {
+    transform: scale(0);
+}
+
+/* Add more styles and animations as needed */
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 3px;
+    }
+    .chat__section{
+        padding: 5px 10px;
+    }
+    /* Adjust styles for smaller screens */
+
+    
+    .fab, .dark-mode-toggle, .light-mode-toggle {
+        font-size: 20px;
+    }
+    .textarea textarea {
+    flex-grow: 1;
+    /* border: none; */
+    /* outline: none; */
+    resize: none;
+    border: none;
+
+    /* border-radius: 5px; */
+    padding: 10px;
+}
+.inputs{
+    border: 1px solid #555;
+    border-radius:24px;
+}
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    background-color: #2C3E55;
+    border-radius: 20px;
+    margin: 5px 10px;
+    flex-direction: column;
+}
+.brand{
+    padding: 5px;
+}
+.textarea{
+    width: 100%;
+    margin: auto;
+}
+
+}
+.joined-user{
+    margin-bottom: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.active-user {
+    padding: 3px 5px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    /* margin-right: 4px; */
+    /* margin-bottom: 4px; */
+    display: inline-block;
+}
+
+#activeUsersList {
+    display: none;
+    margin-top: 0px;
+}
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container to center the chat app */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: #fff; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 80vh; 
+    /* <!-- Set container height to 80% of the viewport height --> */
+}
+
+/* Style loader, name input, and background animations as needed */
+.loader-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.name-input-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Chat section */
+.chat__section {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    /* padding: 20px; */
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Add styles and animations to various chat elements as needed */
+.message-container {
+    /* max-height: 60%; Set maximum height to 60% of the container's height */
+    overflow-y: auto;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+}
+
+
+.emoji-picker {
+    margin-left: 10px;
+}
+
+/* Fab button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fab:hover {
+    background-color: #2980b9;
+}
+
+/* Dark mode and light mode toggles */
+.dark-mode-toggle, .light-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.light-mode-toggle {
+    transform: scale(0);
+}
+
+/* Add more styles and animations as needed */
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    
+    
+    .fab, .dark-mode-toggle, .light-mode-toggle {
+        font-size: 20px;
+    }
+}
+/* Assuming your chat container class is .chat-container */
+.chat-container {
+    height: 80vh; /* Adjust the percentage as needed */
+    /* Add other styles for your chat container here */
+}
+
+/* Style for messages to ensure they fit within the container */
+
+
+/* Style for other chat elements like input, buttons, etc. */
+/* ... */
+/* Style for the typing indicator */
+#typingIndicator {
+    background-color: #4285f4; /* Background color */
+    color: #fff; /* Text color */
+    /* padding: 8px 12px; Padding around the indicator */
+    border-radius: 20px; /* Rounded corners */
+    /* position: absolute; /* Position it within the chat container */
+    /* bottom: 16px; Distance from the bottom */
+    /* right: 16px; Distance from the right */ 
+    /* font-size: 18px; Font size */
+    /* display: none; Initially hidden */
+    /* animation: fadeOut 1s ease-in-out; Add fade-out animation */
+}
+
+/* Animation keyframes for fade-out effect */
+
+/* Background color for the entire chat container */
+
+/* Animation keyframes for fade-out effect */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+/* Style to make it visible when someone is typing */
+.typing {
+    display: block !important;
+    animation: none;
+}
+.chat__section{
+    background-color: #e9e9e9;
+}
+.message p{
+    color: #222;
+}
+.message .info {
+    color: #eee;
+}
+.textarea textarea {
+    flex-grow: 1;
+    /* border: none; */
+    /* outline: none; */
+    resize: none;
+    border: 1px solid #aaa;
+    /* border-radius: 5px; */
+    padding: 10px;
+    margin: 5px;
+}  
+.dark-mode .textarea textarea{
+    border: 1px solid #555;
+
+} 
+.joined-user{
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.total-users{
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+}
+.dark-mode .total-users{
+color: #e9eafd;
+}
+.brand h1{
+    color: #fff;
+}
 
     </style>
 </head> 
@@ -1880,7 +3358,7 @@ border-radius: 16px;
             Add more bubbles as needed
         </div> -->
         <div class="liquid-animation"></div>
-</div>
+    </div>
 <div class="name-input-container" id="nameInputContainer">
     <div class="name-input-box">
         <input type="text" id="nameInput" placeholder="Enter your name">
@@ -1888,10 +3366,11 @@ border-radius: 16px;
     </div>
 </div>
 <div class="background-animation"></div>
-    <section class="chat__section animate-fade-in">
+    <section class="chat__section chat-container animate-fade-in">
         <div class="infod">
             <div class="brand">
                 <h1>Utkarsh Chat</h1>
+                <!-- <button id="openDMButton">Open Direct Messages</button> -->
             </div>
             <div class="info" id="info">
                 <h2>Your Name</h2>
@@ -1907,30 +3386,72 @@ border-radius: 16px;
             </div>
         
         </div>
+        <div class="dm-container">
+            <div class="dm-header" id="dmTitle">Direct messages
+            </div>
+            <button class="dm-close-btn" id="closeDMBtn">✕</button>
+            <div class="dm-message-area" id="dmMessageArea"></div>
+            <div class="dm-input-container">
+            <textarea class="dm-input" id="dmInput" placeholder="Type your message..."></textarea><!-- Emoji Picker -->
+            
+            <button class="dm-send-btn" id="dmSendBtn">Send</button>
+        </div>
+    </div>
+</div>
 
 
-        
+
         <div class="message__area message-container"></div>
+        <div class="typing-indicator" id="typingIndicator"></div>
+       
+         
         <div class="textarea animate-up">
+            <div class="inputs">
             <textarea id="textarea" rows="1" placeholder="Write a message..."></textarea>
+                <div class="emoji-picker">
+                <button class="emoji-btn" id="emojiBtn">😀</button>
+                    <div class="emoji-list" id="emojiList">
+                    <!-- Emoji container -->
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="file" id="imageInput" accept="image/*"> -->
+            <input type="file" id="fileInput" accept="image/*">
+
             <button class="btn" id="sendbtn">Send</button>
         </div>
+        
+        <!-- <button class="btn" id="clearChatBtn">Clear Chat</button> -->
     </section>
     <div class="fab slide-in-left" id="fab">&#9998;</div>
     <div id="darka" class="dark-mode-toggle dark" onclick="darkmode()"><i class="fa-solid fa-moon"></i></div>
     <div id="lighta" class="dark-mode-toggle light" onclick="lightmode()"><i class="fa-solid fa-sun"></i></div>
+    
 </body>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+
     <script>
-        const socket = io();
-        let activeUsersList;
+    const socket = io();
+
+    
         let getname;
         getname = localStorage.getItem("chatName");
+        const dmContainer = document.querySelector('.dm-container');
+const dmTitle = document.getElementById('dmTitle');
+const dmMessageArea = document.getElementById('dmMessageArea');
+const dmInput = document.getElementById('dmInput');
+const dmSendBtn = document.getElementById('dmSendBtn');
+const closeDMBtn = document.getElementById('closeDMBtn');
+let activeUsersList = document.getElementById("activeUsersList");
+
+let selectedUser;
 if (!getname) {
     showNameInputContainer();
 } else {
     initializeChat(getname);
 }
+const userStatus = {}; 
 
 function showNameInputContainer() {
     const nameInputContainer = document.getElementById("nameInputContainer");
@@ -1958,8 +3479,186 @@ function showNameInputContainer() {
         }
     });
 }
-function initializeChat(name) {
 
+// Function to generate emoji buttons and add them to the emoji picker
+function initializeChat(name) {
+const emojiList = document.getElementById('emojiList');
+const emojiBtn = document.getElementById('emojiBtn');
+const messageInput = document.getElementById('textarea');
+
+// Define an array of emojis (you can add more)
+const emojis = [
+    '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😍',
+    '😎', '😋', '😌', '😏', '🙏', '👍', '👎', '👌', '👋', '✋',
+    '🤚', '🖐️', '🤝', '💪', '🙌', '👏', '🤞', '✌️', '🤟', '🤘',
+];
+    function openDM(user) {
+        dmContainer.classList.add('show');
+        selectedUser = user;
+    dmTitle.textContent = `Direct Messages with ${user}`;
+    dmMessageArea.innerHTML = ''; // Clear existing messages
+}
+function closeDM() {
+    dmContainer.classList.remove('show');
+    selectedUser = null;
+    dmTitle.textContent = 'Direct Messages';
+    dmMessageArea.innerHTML = '';
+}
+
+// Listen for active user click event to open DM
+activeUsersList.addEventListener('click', (event) => {
+    const clickedUser = event.target.textContent;
+    if (clickedUser !== getname) {
+        openDM(clickedUser);
+    }
+});
+    closeDMBtn.addEventListener('click', () => {
+        closeDM();
+    });
+        const dmsend = function (){
+        const message = dmInput.value.trim();
+        if (message !== '') {
+            const dmMsg = {
+                user: getname,
+                message: message,
+            };
+            socket.emit('dmMessage', dmMsg, selectedUser); // Emit to a specific user
+            appendDMMessage(dmMsg, 'outgoing');
+            dmInput.value = '';
+            scrollToBottomDM();
+            socket.emit('dmMessage', dmMsg, receiver);
+        }
+    };
+    dmSendBtn.addEventListener('click', dmsend())
+
+dmInput.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        dmsend();
+    }
+});
+socket.on('dmMessage', (msg, sender) => {
+    if (selectedUser === msg.sender || selectedUser === msg.receiver) {
+    // Check if the message is intended for the selected user
+    appendDMMessage(msg, 'incoming');
+    scrollToBottomDM();
+    // Add a notification or alert for the receiver
+    // showNotification(`${msg.sender} sent you a direct message`);
+} 
+});
+function appendDMMessage(msg, type) {
+    const mainDiv = document.createElement('div');
+    mainDiv.classList.add('dm-message', type);
+
+    const markup = `
+    <h4>${msg.user}</h4>
+    <p>${msg.message}</p>
+        <div class="info">${formatDate(new Date())}</div>
+    `;
+    
+    mainDiv.innerHTML = markup;
+    dmMessageArea.appendChild(mainDiv);
+    scrollToBottomDM();
+}
+    function generateEmojis() {
+        emojis.forEach((emoji) => {
+            const emojiButton = document.createElement('button');
+            emojiButton.className = 'emoji';
+            emojiButton.textContent = emoji;
+            emojiButton.dataset.emoji = emoji;
+            emojiButton.addEventListener('click', () => sendMessageWithEmoji(emoji));
+            emojiList.appendChild(emojiButton);
+        });
+    }
+    
+    // Function to send a message with the selected emoji
+    function sendMessageWithEmoji(emoji) {
+    const senderName = getname.toUpperCase(); // Replace with your sender's name retrieval logic
+    const message = `${emoji}`;
+    if (message.trim() !== '') {
+        // You can send the message to the server here
+        // For example:
+        var currentvalue = messageInput.value
+        if(messageInput.value < 1){
+            socket.emit('message', { user: senderName, message: message });
+            sendMessage(message)
+            console.log('Sending message:', message);
+        }
+        else{
+        messageInput.value = currentvalue + ` ${message}`
+        }
+    }
+}
+    
+    // Generate emoji buttons
+    generateEmojis();
+    // Function to toggle emoji picker visibility
+    function toggleEmojiPicker() {
+        emojiList.style.display = emojiList.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    // Function to insert selected emoji into the message input
+   
+    
+    // Event listener to open/close emoji picker
+    emojiBtn.addEventListener('click', toggleEmojiPicker);
+    
+    // Event listener to insert emoji when clicked
+
+    
+    // Generate emoji buttons
+    generateEmojis();
+    document.addEventListener('click', (event) => {
+    if (!event.target.closest('.emoji-picker')) {
+        emojiList.style.display = 'none';
+    }
+});
+const fileInput = document.getElementById('fileInput');
+
+fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const fileData = e.target.result;
+            // Emit the file data to the server
+            socket.emit('file', { user: getname, data: fileData, fileName: file.name });
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+
+
+
+function showDMPopup(sender) {
+    const dmPopup = document.getElementById('dmPopup');
+    dmPopup.textContent = `${sender} has sent you a direct message`;
+    dmPopup.classList.add('show');
+    setTimeout(() => {
+        dmPopup.classList.remove('show');
+    }, 3000);
+}
+    function scrollToBottomDM() {
+        dmMessageArea.scrollTop = dmMessageArea.scrollHeight;
+    }
+    function formatDate(date) {
+        const options = { hour: 'numeric', minute: 'numeric' };
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+    // Inside your initializeChat function
+
+
+
+
+
+
+
+
+
+    activeUsersList = document.getElementById("activeUsersList");
+    // let emoji = document.querySelector('#textarea').emojioneArea();
     let messageArea = document.querySelector(".message__area");
     let totalUsers = document.querySelector("#total-users");
     
@@ -1967,18 +3666,64 @@ function initializeChat(name) {
     let info = document.querySelector("#info");
     let sendBtn = document.querySelector("#sendbtn");
     name = name.toUpperCase();
+    // const searchInput = document.getElementById('searchInput');
+// const searchResults = document.getElementById('searchResults');
+let messages = []; // To store all chat messages
+
+    const typingIndicator = document.getElementById('typingIndicator');
+let isTyping = false;
 
     // Rest of your existing code...
 
     info.innerHTML = `<h2>${name}</h2>`;
 
+    // const imageInput = document.getElementById('imageInput');
 
+// imageInput.addEventListener('change', (event) => {
+//     const file = event.target.files[0];
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = (e) => {
+//             const imageDataURL = e.target.result;
+//             socket.emit('image', { user: name, image: imageDataURL });
+//         };
+//         reader.readAsDataURL(file);
+//     }
+// });
     // Rest of your existing code...
-    textarea.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage(e.target.value);
-        }
-    });
+    let typingTimeout;
+    // Inside your initializeChat function
+    
+function scrollToBottom() {
+    messageArea.scrollTop = messageArea.scrollHeight;
+}
+// Add event listeners for typing
+textarea.addEventListener('input', (e) => {
+    if (!isTyping) {
+        socket.emit('typing', { isTyping: true, user: name });
+        isTyping = true;
+    }
+ 
+    clearTimeout(typingTimeout);
+    typingTimeout = setTimeout(() => {
+        socket.emit('typing', { isTyping: false, user: name });
+        isTyping = false;
+    }, 1000);
+});
+
+textarea.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage(e.target.value);
+    }
+})
+
+socket.on('typing', (data) => {
+    if (data.isTyping) {
+        typingIndicator.textContent = `${data.user} is typing...`;
+    } else {
+        typingIndicator.textContent = '';
+    }
+});
 
     sendBtn.addEventListener('click', () => {
         sendMessage(textarea.value);
@@ -1986,9 +3731,7 @@ function initializeChat(name) {
 
     function sendMessage(message) {
         message = message.trim();
-        if (message === '') {
-            return;
-        }
+        
 
         let msg = {
             user: name,
@@ -1999,14 +3742,38 @@ function initializeChat(name) {
         textarea.value = '';
 
         socket.emit('message', msg);
+        saveMessageToLocalStorage(msg);
         scrollToBottom();
     }
 
     socket.emit('joined', name);
+//     socket.on('image', (msg) => {
+//     if (msg.user !== 'ZARVIS') {
+//         appendImage(msg, 'incoming');
+//     }
+//     scrollToBottom();
+// });
+// function appendImage(msg, type) {
+//     let mainDiv = document.createElement('div');
+//     mainDiv.classList.add('message', type);
 
+//     if (type === 'incoming') {
+//         mainDiv.classList.add('incoming');
+//     }
+
+//     let markup = `
+//         <h4>${msg.user}</h4>
+//         <img src="${msg.image}" alt="Received Image">
+//         <div class="info">${formatDate(new Date())}</div>
+//     `;
+
+//     mainDiv.innerHTML = markup;
+//     messageArea.appendChild(mainDiv);
+// }
     function appendMessage(msg, type) {
         let mainDiv = document.createElement('div');
         mainDiv.classList.add('message', type);
+        
 
         if (msg.user === 'ZARVIS') {
             if (msg.message.startsWith(name)) {
@@ -2029,27 +3796,78 @@ function initializeChat(name) {
         mainDiv.innerHTML = markup;
         messageArea.appendChild(mainDiv);
     }
+    
+// Scroll to bottom of DM message area
 
-    socket.on('message', (msg) => {
-        if (msg.user === 'ZARVIS') {
+    function loadMessagesFromLocalStorage() {
+        const savedMessages = localStorage.getItem('chatMessages');
+        
+            console.log(savedMessages)
+    if (savedMessages) {
+        console.log(savedMessages)
+
+        const parsedMessages = JSON.parse(savedMessages);
+        parsedMessages.forEach(msg => {
+            messages.push(msg);
+
+            // Determine if the message is incoming or outgoing
+            const messageType = msg.user === name ? 'outgoing' : 'incoming';
+            appendMessage(msg, messageType);
+        });
+        
+    }
+    scrollToBottom(); // Scroll to the bottom after loading messages
+}
+scrollToBottom(); // Scroll to the bottom after loading messages
+
+// Save a new message to local storage
+loadMessagesFromLocalStorage();
+function saveMessageToLocalStorage(msg) {
+    messages.push(msg);
+    const savedMessages = localStorage.getItem('chatMessages');
+    const parsedMessages = savedMessages ? JSON.parse(savedMessages) : [];
+    parsedMessages.push(msg);
+    localStorage.setItem('chatMessages', JSON.stringify(parsedMessages));
+}
+function handleIncomingMessage(msg) {
+    messages.push(msg);
+    // appendMessage(msg, 'incoming');
+    saveMessageToLocalStorage(msg);
+    scrollToBottom();
+}
+function scrollToBottomDM() {
+dmMessageArea.scrollTop = dmMessageArea.scrollHeight;
+}
+socket.on('message', (msg) => {
+    // const isOutgoing = msg.user === getname;
+    if (msg.user === 'ZARVIS'){
             if (msg.message.startsWith(name)) {
                 appendMessage(msg, 'user-left');
+    scrollToBottom();
+
             } else {
                 appendMessage(msg, 'system');
+    scrollToBottom();
+
             }
-        } else {
-            appendMessage(msg, 'incoming');
         }
-        scrollToBottom();
-    });
+    else {
+            //    messages.push(msg);
+               appendMessage(msg, 'incoming');
+               handleIncomingMessage(msg);
+               scrollToBottom();
+   
+           }
+    scrollToBottom();
+
+    
+});
 
     socket.on('userCount', (count) => {
         totalUsers.textContent = `Total Users: ${count}`;
+        console.log(count)
     });
 
-    function scrollToBottom() {
-        messageArea.scrollTop = messageArea.scrollHeight;
-    }
 
     function formatDate(date) {
         const options = { hour: 'numeric', minute: 'numeric' };
@@ -2059,20 +3877,29 @@ function initializeChat(name) {
     socket.on("userListUpdate", (activeUsers) => {
         updateActiveUsersList(activeUsers);
     });
-}
-activeUsersList = document.getElementById("activeUsersList");
-function updateActiveUsersList(activeUsers) {
-    // activeUsersList.innerHTML = "";
-    activeUsers.forEach((user) => {
-        if (user !== name) {
-            let userDiv = document.createElement("div");
-            userDiv.classList.add("active-user");
-            userDiv.textContent += user;
-            activeUsersList.appendChild(userDiv);
-        }
-    });
+    socket.on('userStatusUpdate', (statusUpdate) => {
+    userStatus[statusUpdate.user] = statusUpdate.status;
+    updateActiveUsersList(Object.keys(userStatus));
+});
+
 }
 
+function updateActiveUsersList(activeUsers) {
+    activeUsersList.innerHTML = '';
+    activeUsers.forEach((user) => {
+        const userDiv = document.createElement('div');
+        userDiv.classList.add('active-user');
+        userDiv.textContent = user;
+        
+        // Add online status indicator based on userStatus
+        const statusIndicator = document.createElement('span');
+        statusIndicator.classList.add('status-indicator');
+        // statusIndicator.textContent = userStatus[user] ? 'Online' : 'Offline';
+        
+        // userDiv.appendChild(statusIndicator);
+        activeUsersList.appendChild(userDiv);
+    });
+}
 const totalusers = document.getElementById("joined-user");
 totalusers.addEventListener("click", () => {
     if (activeUsersList.style.display === "none") {
@@ -2081,11 +3908,12 @@ totalusers.addEventListener("click", () => {
         activeUsersList.style.display = "none";
     }
 });
+
         const fab = document.getElementById('fab');
         const messagearea = document.querySelector('.message__area');
 
         fab.addEventListener('click', () => {
-            messagearea.style.maxHeight = messagearea.style.maxHeight === '400px' ? '90vh' : '400px';
+            messagearea.style.maxHeight = messagearea.style.maxHeight === '300px' ? '90vh' : '300px';
         });
 
         const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -2133,6 +3961,16 @@ window.onload = function() {
     }, 1000);
 
 };
+// Function to update chat container height based on viewport height
+function updateChatContainerHeight() {
+    const chatContainer = document.querySelector('.chat-container');
+    chatContainer.style.height = `${window.innerHeight * 0.95}px`; // Adjust the percentage as needed
+}
+
+// Call the function when the page loads and when the window is resized
+window.addEventListener('load', updateChatContainerHeight);
+window.addEventListener('resize', updateChatContainerHeight);
+
 
     </script>
 
