@@ -1809,6 +1809,39 @@ border-radius: 16px;
     .chat__section{
         max-width: 90%;
     }
+    .emoji-list {
+    position: fixed;
+    bottom: 140px;
+    left: 150px;
+    transform: translateY(10px);
+    /* background-color: #222; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    border-radius: 4px;
+    display: none;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 230px;
+    padding: 10px;
+}
+.message__area {
+    max-height: 64%;
+}
+.dark-mode .emoji-list{
+    position: fixed;
+    bottom: 25%;
+    left: 33%;
+    transform: translateY(10px);
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: none;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 180px;
+    padding: 10px;
+}
 }
 /* ... Your existing CSS ... */
 
@@ -2690,7 +2723,7 @@ body.dark-mode {
 .emoji-list {
   position: absolute;
   bottom: 100%;
-  left: 0;
+  /* left: 0;/ */
   transform: translateY(10px);
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -2777,7 +2810,7 @@ body.dark-mode {
 /* Style for the emoji list container */
 .dark-mode .emoji-list {
   position: absolute;
-  bottom: 100%;
+  /* bottom: 100%; */
   left: -50px;
   transform: translateY(10px);
   background-color: #222;
@@ -3119,6 +3152,7 @@ body {
     border: 1px solid #555;
     border-radius:24px;
 }
+
 .info {
     display: flex;
     justify-content: center;
@@ -3346,7 +3380,41 @@ color: #e9eafd;
 .brand h1{
     color: #fff;
 }
-
+@media(max-width:769px){
+    .emoji-list {
+    position: fixed;
+    bottom: 140px;
+    left: 150px;
+    transform: translateY(10px);
+    /* background-color: #222; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    border-radius: 4px;
+    display: none;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 230px;
+    padding: 10px;
+}
+.message__area {
+    max-height: 64%;
+}
+.dark-mode .emoji-list{
+    position: fixed;
+    bottom: 25%;
+    left: 33%;
+    transform: translateY(10px);
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    display: none;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 180px;
+    padding: 10px;
+}
+}
     </style>
 </head> 
 <div class="loader-container" id="loaderContainer">
@@ -3581,8 +3649,7 @@ function appendDMMessage(msg, type) {
         if(messageInput.value < 1){
             socket.emit('message', { user: senderName, message: message });
             sendMessage(message)
-            console.log('Sending message:', message);
-        }
+                    }
         else{
         messageInput.value = currentvalue + ` ${message}`
         }
@@ -3731,7 +3798,11 @@ socket.on('typing', (data) => {
 
     function sendMessage(message) {
         message = message.trim();
-        
+        if(message === ''){
+            textarea.style.border = "1px solid rgb(255,50,90)"
+        }
+        else{
+
 
         let msg = {
             user: name,
@@ -3745,7 +3816,7 @@ socket.on('typing', (data) => {
         saveMessageToLocalStorage(msg);
         scrollToBottom();
     }
-
+    }
     socket.emit('joined', name);
 //     socket.on('image', (msg) => {
 //     if (msg.user !== 'ZARVIS') {
@@ -3802,9 +3873,8 @@ socket.on('typing', (data) => {
     function loadMessagesFromLocalStorage() {
         const savedMessages = localStorage.getItem('chatMessages');
         
-            console.log(savedMessages)
-    if (savedMessages) {
-        console.log(savedMessages)
+                if (savedMessages) {
+        
 
         const parsedMessages = JSON.parse(savedMessages);
         parsedMessages.forEach(msg => {
@@ -3865,7 +3935,7 @@ socket.on('message', (msg) => {
 
     socket.on('userCount', (count) => {
         totalUsers.textContent = `Total Users: ${count}`;
-        console.log(count)
+        
     });
 
 
