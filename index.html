@@ -1395,7 +1395,18 @@ border-radius: 16px;
         align-items: center;
         margin-top: 10px;
     }
-
+    .info{
+        padding: 0;
+    }
+    .info h2 {
+        color: #FFF;
+        padding: 0;
+        margin: 0;
+        font-size:18px;
+    }
+    .brand{
+        padding: 2px 5px;
+    }
     .active-user {
         width: 100%;
         text-align: center;
@@ -1453,16 +1464,21 @@ border-radius: 16px;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    font-size:18px;
 }
 
 .brand h1 {
-    font-size: 24px;
+    font-size: 22px;
     color: #3498db;
+    /* margin: 0; */
+   padding:3px 5px;
 }
 
 .info h2 {
     font-size: 18px;
     color: #555;
+    padding:2px 5px ;
+    
 }
 
 .joined-user {
@@ -1603,7 +1619,7 @@ border-radius: 16px;
 /* Add your animation keyframes and other styles here */
 .info h2{
     color: #FFF;
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 .joined-user{
@@ -1628,10 +1644,11 @@ border-radius: 16px;
 .infod{
     margin-bottom: 0;
 }
-@media (max-width:450px){
+@media (max-width:600px){
     .infod{
         display: block;
     margin-bottom: 0;
+        font-size: 22px ;
 }
 
 
@@ -3132,6 +3149,7 @@ body {
     .chat__section{
         padding: 5px 10px;
     }
+}
     /* Adjust styles for smaller screens */
 
     
@@ -3347,6 +3365,12 @@ body {
 .message .info {
     color: #eee;
 }
+        .system-message p {
+            color: #fff;
+        }
+        .system-message h4{
+            color: #2c3e55;
+        }
 .textarea textarea {
     flex-grow: 1;
     /* border: none; */
@@ -3415,6 +3439,151 @@ color: #e9eafd;
     padding: 10px;
 }
 }
+.chat__section{
+    border-radius:8px;
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}
+        .brand{
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        .info{
+        border-radius:5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        .btn:active {
+            transform: scale(0.9); /* Scale down by 90% while the button is clicked */
+            transition: transform 0.2s; 
+        }
+        @keyframes button-click-animation {
+          0% {
+            transform: scale(1);
+            box-shadow: none;
+          }
+          50% {
+            transform: scale(0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: none;
+          }
+        }
+.textarea{
+    padding: 2px 5px;
+}
+        .info{
+            margin: 3px;
+        }
+        /* Style for the message container */
+        .message-container {
+            /* background-color: #3498db; */
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            /* max-width: 70%; */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+.message_area{
+    max-height:90%;
+}
+        /* Style for the message text */
+        .message-text {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Style for the timestamp within the message */
+        
+
+        /* Example of how to style a different type of message */
+        /* For example, a received message */
+        .received-message-container {
+            background-color: #e0e0e0;
+            color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            max-width: 70%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Style for the received message text */
+        .received-message-text {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Style for the received message timestamp within the message */
+        .received-message-timestamp {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            text-align: right; /* Aligns the timestamp to the right */
+            position: absolute;
+            bottom: 5px;
+            right: 10px; /* Adjust the positioning as needed */
+        }
+        
+        /* CSS for the showtime element */
+        .time {
+            font-size: 13px; /* Adjust the font size as needed */
+            font-family: Arial, sans-serif; /* Choose your desired font-family */
+            text-align: center;
+            /* background-color: #f0f0f0; /* Background color for the element */ 
+            padding: 2px; /* Adjust padding as needed */
+            margin:2px 10px; /* Adjust margin as needed */
+            border-radius: 5px; /* Rounded corners */
+            /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+            color: #eee;/* Box shadow for a subtle effect */
+            display: block;
+            background-color:#efefef;
+            text-align:center;
+        }
+.message-container{
+    background: #efefef;
+}
+        .system-message:hover p{
+            color: #222;
+        }
+        .incoming p{
+            color: #eee;
+        }
+        .dark-mode .system-message:hover p{
+            color:#eee;
+        }
+        /* CSS for the paragraph inside the showtime element */
+        .time p {
+            margin: 0;
+            color: #222;
+            letter-spacing:1.2px;
+            font-weight:500;
+            /* Remove default margin for the paragraph */
+        }
+        .dark-mode .time{
+            background-color:#1c1c1c;
+        }
+        .message{
+            padding: 8px 10px;
+        }
+        .message p{
+            margin: 0;
+            padding: 2px 0;
+        }
+        @media (max-width:620px){
+            .brand{
+                padding: 2px 5px;
+            }
+            .brand h1 {
+                font-size: 22px;
+                color: #3498db;
+                /* margin: 0; */
+                padding: 0px 5px;
+            }
+        }
     </style>
 </head> 
 <div class="loader-container" id="loaderContainer">
@@ -3613,19 +3782,22 @@ socket.on('dmMessage', (msg, sender) => {
     // showNotification(`${msg.sender} sent you a direct message`);
 } 
 });
+    // showtime()
 function appendDMMessage(msg, type) {
+    showtime()
     const mainDiv = document.createElement('div');
     mainDiv.classList.add('dm-message', type);
 
     const markup = `
     <h4>${msg.user}</h4>
     <p>${msg.message}</p>
-        <div class="info">${formatDate(new Date())}</div>
+        <div class="info time">${formatDate(new Date())}</div>
     `;
     
     mainDiv.innerHTML = markup;
     dmMessageArea.appendChild(mainDiv);
     scrollToBottomDM();
+    
 }
     function generateEmojis() {
         emojis.forEach((emoji) => {
@@ -3741,8 +3913,41 @@ let messages = []; // To store all chat messages
 let isTyping = false;
 
     // Rest of your existing code...
-
+    let showTime;
     info.innerHTML = `<h2>${name}</h2>`;
+
+    function showtime(timestamp) {
+        const timeDiv = document.createElement('div');
+        timeDiv.classList.add('time');
+
+        if (timestamp) {
+            showTime = timestamp;
+            // return showTime
+        } else {
+            const currentDate = new Date();
+            const hours = currentDate.getHours();
+            const minutes = currentDate.getMinutes();
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+            const hours12 = (hours % 12) || 12;
+            const minutesFormatted = minutes < 10 ? `0${minutes}` : minutes;
+
+            const dateOptions = { day: 'numeric', month: 'short' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
+
+            showTime = `${hours12}:${minutesFormatted} ${amPm}, ${formattedDate}`;
+            // return showTime
+        }
+
+        const timemarkup = `
+            <p>${showTime}</p>
+        `;
+
+        timeDiv.innerHTML = timemarkup;
+        messageArea.appendChild(timeDiv);
+
+        return showTime;
+    }
+
 
     // const imageInput = document.getElementById('imageInput');
 
@@ -3802,6 +4007,7 @@ socket.on('typing', (data) => {
             textarea.style.border = "1px solid rgb(255,50,90)"
         }
         else{
+             // showtime()
 
 
         let msg = {
@@ -3841,11 +4047,11 @@ socket.on('typing', (data) => {
 //     mainDiv.innerHTML = markup;
 //     messageArea.appendChild(mainDiv);
 // }
-    function appendMessage(msg, type) {
+    function appendMessage(msg, type, timestamp) {
+        showtime(timestamp); // Call showTime with the provided timestamp
         let mainDiv = document.createElement('div');
         mainDiv.classList.add('message', type);
-        
-
+        console.log(timestamp)
         if (msg.user === 'ZARVIS') {
             if (msg.message.startsWith(name)) {
                 mainDiv.classList.add('user-left');
@@ -3861,44 +4067,43 @@ socket.on('typing', (data) => {
         let markup = `
             <h4>${msg.user}</h4>
             <p>${msg.message}</p>
-            <div class="info">${formatDate(new Date())}</div>
         `;
 
         mainDiv.innerHTML = markup;
         messageArea.appendChild(mainDiv);
     }
-    
-// Scroll to bottom of DM message area
 
+    // Scroll to the bottom of DM message area
     function loadMessagesFromLocalStorage() {
         const savedMessages = localStorage.getItem('chatMessages');
-        
-                if (savedMessages) {
-        
 
-        const parsedMessages = JSON.parse(savedMessages);
-        parsedMessages.forEach(msg => {
-            messages.push(msg);
+        if (savedMessages) {
+            const parsedMessages = JSON.parse(savedMessages);
+            parsedMessages.forEach(msg => {
+                messages.push(msg);
 
-            // Determine if the message is incoming or outgoing
-            const messageType = msg.user === name ? 'outgoing' : 'incoming';
-            appendMessage(msg, messageType);
-        });
-        
+                // Determine if the message is incoming or outgoing
+                const messageType = msg.user === name ? 'outgoing' : 'incoming';
+                appendMessage(msg, messageType, msg.timestamp);
+            });
+        }
+        scrollToBottom(); // Scroll to the bottom after loading messages
     }
     scrollToBottom(); // Scroll to the bottom after loading messages
-}
-scrollToBottom(); // Scroll to the bottom after loading messages
+loadMessagesFromLocalStorage()
+    // Save a new message to local storage
+    function saveMessageToLocalStorage(msg) {
+        messages.push(msg);
 
-// Save a new message to local storage
-loadMessagesFromLocalStorage();
-function saveMessageToLocalStorage(msg) {
-    messages.push(msg);
-    const savedMessages = localStorage.getItem('chatMessages');
-    const parsedMessages = savedMessages ? JSON.parse(savedMessages) : [];
-    parsedMessages.push(msg);
-    localStorage.setItem('chatMessages', JSON.stringify(parsedMessages));
-}
+        // Get the timestamp using showTime and store it in msg.timestamp
+        msg.timestamp = showTime;
+
+        const savedMessages = localStorage.getItem('chatMessages');
+        const parsedMessages = savedMessages ? JSON.parse(savedMessages) : [];
+        parsedMessages.push(msg);
+        localStorage.setItem('chatMessages', JSON.stringify(parsedMessages));
+    }
+
 function handleIncomingMessage(msg) {
     messages.push(msg);
     // appendMessage(msg, 'incoming');
